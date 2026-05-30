@@ -4,6 +4,8 @@ import ReviewCards from '../components/ReviewCards.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import { reviews } from '../data/reviews';
 import { site, pageMeta } from '../data/site';
+
+const tripadvisorUrl = 'https://www.tripadvisor.com/Attraction_Review-g293771-d32861065-Reviews-Burundi_Guides-Bujumbura_Bujumbura_Mairie_Province.html';
 ---
 
 <BaseLayout
@@ -25,6 +27,33 @@ import { site, pageMeta } from '../data/site';
   </div>
 
   <ReviewCards preview={false} />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="card grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-[var(--color-brand-green)]">
+            Tripadvisor reviews
+          </p>
+          <h2 class="mb-3 text-2xl font-bold text-[var(--color-brand-green-dark)]">
+            See Burundi Guides on Tripadvisor
+          </h2>
+          <p class="max-w-3xl text-sm leading-relaxed text-[var(--color-brand-muted)]">
+            Visit the Tripadvisor page for Burundi Guides to see more traveller feedback and details about guided experiences in Bujumbura and around Burundi.
+          </p>
+        </div>
+        <a
+          href={tripadvisorUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-green justify-center whitespace-nowrap"
+          aria-label="Open the Burundi Guides Tripadvisor page in a new tab"
+        >
+          View Tripadvisor page
+        </a>
+      </article>
+    </div>
+  </section>
 
   <!-- Review photos section -->
   <section class="py-16 bg-white">
