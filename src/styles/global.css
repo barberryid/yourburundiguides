@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-green: #1a5c38;
-  --color-brand-green-dark: #103d25;
-  --color-brand-green-light: #2d7a4f;
-  --color-brand-red: #c0392b;
-  --color-brand-red-dark: #96281b;
-  --color-brand-cream: #faf7f2;
-  --color-brand-gold: #c9993a;
-  --color-brand-charcoal: #1e1e1e;
-  --color-brand-muted: #5a5a5a;
-  --color-brand-bg-light: #f0ebe3;
+  /* ── Warm Burundi Editorial palette ── */
+  --color-brand-green: #146B3A;
+  --color-brand-green-dark: #0F5230;
+  --color-brand-green-soft: #E4F1E7;
+  --color-brand-red: #B91C2B;
+  --color-brand-red-dark: #8F1421;
+  --color-brand-cream: #FFF8ED;
+  --color-brand-sand: #F4E7D0;
+  --color-brand-gold: #D99A32;
+  --color-brand-charcoal: #1E211B;
+  --color-brand-muted: #5C5850;
+  --color-brand-bg-light: #F4E7D0;
+  --color-brand-border: #E5D4B8;
 
   --font-sans: "Inter", "Source Sans 3", system-ui, sans-serif;
   --font-serif: "Fraunces", "Playfair Display", Georgia, serif;
@@ -98,6 +101,7 @@
     text-wrap: balance;
   }
 
+  /* ── Primary CTA button (red) ── */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -111,12 +115,17 @@
     text-decoration: none;
     transition: background-color 0.2s, transform 0.18s ease, box-shadow 0.18s ease;
   }
+  .btn-primary:hover {
+    background-color: var(--color-brand-red-dark);
+    transform: translateY(-1px);
+  }
 
+  /* ── WhatsApp button (green) ── */
   .btn-whatsapp {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #168a42;
+    background-color: var(--color-brand-green);
     color: #fff;
     min-height: 48px;
     font-weight: 800;
@@ -126,10 +135,11 @@
     transition: background-color 0.2s, transform 0.18s ease, box-shadow 0.18s ease;
   }
   .btn-whatsapp:hover {
-    background-color: #0f6d32;
+    background-color: var(--color-brand-green-dark);
     transform: translateY(-1px);
   }
 
+  /* ── Outline dark button (secondary, on light backgrounds) ── */
   .btn-outline-dark {
     display: inline-flex;
     align-items: center;
@@ -140,20 +150,17 @@
     font-weight: 800;
     padding: 0.85rem 1.25rem;
     border-radius: 999px;
-    border: 1px solid #cfc8bc;
+    border: 2px solid var(--color-brand-border);
     text-decoration: none;
     transition: background-color 0.2s, border-color 0.2s, transform 0.18s ease;
   }
   .btn-outline-dark:hover {
-    background-color: #fff;
+    background-color: var(--color-brand-green-soft);
     border-color: var(--color-brand-green);
     transform: translateY(-1px);
   }
-  .btn-primary:hover {
-    background-color: var(--color-brand-red-dark);
-    transform: translateY(-1px);
-  }
 
+  /* ── Secondary button (white outline, for use on dark/green backgrounds) ── */
   .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -174,6 +181,7 @@
     transform: translateY(-1px);
   }
 
+  /* ── Green filled button ── */
   .btn-green {
     display: inline-flex;
     align-items: center;
@@ -192,6 +200,7 @@
     transform: translateY(-1px);
   }
 
+  /* ── Section headings ── */
   .section-heading {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 4vw, 3.2rem);
@@ -210,11 +219,12 @@
     margin-bottom: 2rem;
   }
 
+  /* ── Card ── */
   .card {
     background: #fff;
     border-radius: 1rem;
-    border: 1px solid #e6ded2;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-brand-border);
+    box-shadow: 0 2px 8px rgba(30, 33, 27, 0.04);
     padding: 1.5rem;
   }
 
@@ -235,6 +245,7 @@
     margin-top: 0.85rem;
   }
 
+  /* ── Mobile sticky WhatsApp bar ── */
   .mobile-sticky-whatsapp {
     display: none;
   }

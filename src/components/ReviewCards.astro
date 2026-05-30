@@ -10,7 +10,7 @@ const { preview = false } = Astro.props;
 const displayReviews = preview ? reviews.slice(0, 3) : reviews;
 ---
 
-<section id="reviews" class="py-16 md:py-24 bg-[var(--color-brand-bg-light)]">
+<section id="reviews" class="py-16 md:py-24 bg-[var(--color-brand-green-soft)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <SectionHeading
       title="What visitors say"
@@ -36,7 +36,7 @@ const displayReviews = preview ? reviews.slice(0, 3) : reviews;
             "{review.text}"
           </blockquote>
 
-          <div class="flex items-center gap-3 border-t border-gray-100 pt-4">
+          <div class="flex items-center gap-3 border-t border-[var(--color-brand-border)] pt-4">
             {review.image ? (
               <img
                 src={review.image}

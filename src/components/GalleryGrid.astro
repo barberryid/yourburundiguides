@@ -12,7 +12,7 @@ const images = galleryImages.slice(0, limit);
 
 <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
   {images.map((img) => (
-    <div class="overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm">
+    <div class="overflow-hidden rounded-xl border border-[var(--color-brand-border)] bg-white shadow-sm">
       <img
         src={img.src}
         alt={img.alt}

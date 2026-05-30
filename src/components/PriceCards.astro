@@ -11,7 +11,7 @@ const { preview = false } = Astro.props;
 const displayCards = preview ? priceCards : priceCards;
 ---
 
-<section id="prices" class="py-16 md:py-24 bg-white">
+<section id="prices" class="py-16 md:py-24 bg-[var(--color-brand-cream)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <SectionHeading
       title="Prices and quotes"
@@ -23,7 +23,7 @@ const displayCards = preview ? priceCards : priceCards;
         <article class="card flex flex-col border border-[var(--color-brand-green)]/10">
           <h3 class="mb-3 text-xl font-bold text-[var(--color-brand-green-dark)]">{card.title}</h3>
           <p class="mb-4 text-base leading-8 text-[var(--color-brand-muted)]">{card.bestFor}</p>
-          <div class="mb-5 rounded-xl bg-[var(--color-brand-bg-light)] p-4">
+          <div class="mb-5 rounded-xl bg-[var(--color-brand-green-soft)] p-4">
             <p class="text-xs font-bold uppercase tracking-wide text-[var(--color-brand-green-dark)]">Quote required:</p>
             <p class="mt-1 text-base leading-7 text-[var(--color-brand-muted)]">{card.note}</p>
           </div>

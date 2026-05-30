@@ -169,10 +169,10 @@ const structuredData = [
 
   <section aria-label="Trust signals" class="bg-[var(--color-brand-cream)] pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl border border-stone-200 bg-[var(--color-brand-bg-light)] p-4 shadow-sm">
+      <div class="rounded-2xl border border-[var(--color-brand-border)] bg-[var(--color-brand-sand)] p-4 shadow-sm">
         <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
           {trustItems.map((item) => (
-            <div class="rounded-xl bg-white px-3 py-3 text-sm font-semibold leading-snug text-[var(--color-brand-green-dark)]">
+            <div class="rounded-xl bg-white px-3 py-3 text-sm font-semibold leading-snug text-[var(--color-brand-green-dark)] border border-[var(--color-brand-border)]">
               {item}
             </div>
           ))}
@@ -188,7 +188,7 @@ const structuredData = [
         {jumpLinks.map((link) => (
           <a
             href={link.href}
-            class="rounded-full border border-stone-300 bg-white px-3 py-2 font-semibold text-[var(--color-brand-green-dark)] transition-colors hover:border-[var(--color-brand-green)] hover:bg-[var(--color-brand-bg-light)]"
+            class="rounded-full border border-[var(--color-brand-border)] bg-[var(--color-brand-cream)] px-3 py-2 font-semibold text-[var(--color-brand-green-dark)] transition-colors hover:border-[var(--color-brand-green)] hover:bg-[var(--color-brand-green-soft)]"
           >
             {link.label}
           </a>
@@ -197,7 +197,7 @@ const structuredData = [
     </div>
   </nav>
 
-  <section id="how-it-works" class="py-16 md:py-24 bg-white">
+  <section id="how-it-works" class="py-16 md:py-24 bg-[var(--color-brand-sand)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
         title="How booking works"
@@ -278,7 +278,7 @@ const structuredData = [
   <PriceCards preview={true} />
   <ReviewCards preview={true} />
 
-  <section id="photos" class="py-16 md:py-24 bg-white">
+  <section id="photos" class="py-16 md:py-24 bg-[var(--color-brand-cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
         title="Photos from Burundi"
