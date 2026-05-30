@@ -1,0 +1,56 @@
+---
+import { priceCards } from '../data/prices';
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+
+interface Props {
+  preview?: boolean;
+}
+
+const { preview = false } = Astro.props;
+const displayCards = preview ? priceCards.slice(0, 2) : priceCards;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      title="Prices"
+      subtitle="Prices depend on the route, number of people, transport needs, and length of the trip. Contact Gabriel on WhatsApp for a clear quote before you travel."
+    />
+
+    <div class={`grid grid-cols-1 ${preview ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-4'} gap-6`}>
+      {displayCards.map((card) => (
+        <div class="card border border-[var(--color-brand-green)]/10 flex flex-col">
+          <h3 class="text-xl font-bold text-[var(--color-brand-green-dark)] mb-2">{card.title}</h3>
+          <p class="text-[var(--color-brand-muted)] text-sm mb-4 italic">{card.note}</p>
+          <ul class="space-y-2 mb-6 flex-grow">
+            {card.includes.map((item) => (
+              <li class="flex items-start gap-2 text-sm text-[var(--color-brand-charcoal)]">
+                <svg class="w-4 h-4 text-[var(--color-brand-green)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={site.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-green text-sm text-center justify-center"
+          >
+            {card.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    {preview && (
+      <div class="text-center mt-10">
+        <a href="/prices/" class="btn-green">
+          View full pricing details
+        </a>
+      </div>
+    )}
+  </div>
+</section>
