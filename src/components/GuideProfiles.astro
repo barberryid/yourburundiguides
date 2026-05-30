@@ -47,12 +47,12 @@ const guides = [
           />
           <div>
             <h3 class="text-xl font-bold text-[var(--color-brand-green-dark)]">{guide.name}</h3>
-            <p class="mb-3 text-sm font-semibold text-[var(--color-brand-gold)]">{guide.role}</p>
-            <p class="mb-4 text-sm leading-relaxed text-[var(--color-brand-muted)]">{guide.bio}</p>
-            <p class="mb-2 text-sm font-bold text-[var(--color-brand-green-dark)]">Good for:</p>
+            <p class="mb-3 text-base font-semibold leading-7 text-[var(--color-brand-gold)]">{guide.role}</p>
+            <p class="mb-4 text-base leading-8 text-[var(--color-brand-muted)]">{guide.bio}</p>
+            <p class="mb-2 text-base font-bold leading-7 text-[var(--color-brand-green-dark)]">Good for:</p>
             <ul class="space-y-2">
               {guide.goodFor.map((item) => (
-                <li class="flex gap-2 text-sm leading-relaxed text-[var(--color-brand-charcoal)]">
+                <li class="flex gap-2 text-base leading-7 text-[var(--color-brand-charcoal)]">
                   <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-brand-green)]"></span>
                   {item}
                 </li>

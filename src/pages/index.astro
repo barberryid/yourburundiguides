@@ -206,8 +206,8 @@ const structuredData = [
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map((step) => (
           <article class="card">
-            <h3 class="mb-3 text-lg font-bold text-[var(--color-brand-green-dark)]">{step.title}</h3>
-            <p class="text-sm leading-relaxed text-[var(--color-brand-muted)]">{step.body}</p>
+            <h3 class="mb-3 text-xl font-bold text-[var(--color-brand-green-dark)]">{step.title}</h3>
+            <p class="text-base leading-8 text-[var(--color-brand-muted)]">{step.body}</p>
           </article>
         ))}
       </div>
@@ -233,7 +233,7 @@ const structuredData = [
         {localGuideReasons.map(([title, body]) => (
           <article class="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 class="mb-2 font-bold text-[var(--color-brand-gold)]">{title}</h3>
-            <p class="text-sm leading-relaxed text-white/75">{body}</p>
+            <p class="text-base leading-8 text-white/75">{body}</p>
           </article>
         ))}
       </div>
@@ -250,8 +250,8 @@ const structuredData = [
         {trips.map((trip) => (
           <article class="card flex flex-col">
             <h3 class="mb-3 text-xl font-bold text-[var(--color-brand-green-dark)]">{trip.place}</h3>
-            <p class="mb-5 text-sm leading-relaxed text-[var(--color-brand-muted)]">{trip.desc}</p>
-            <dl class="mb-6 grid gap-4 text-sm">
+            <p class="mb-5 text-base leading-8 text-[var(--color-brand-muted)]">{trip.desc}</p>
+            <dl class="mb-6 grid gap-4 text-base leading-7">
               <div>
                 <dt class="font-bold text-[var(--color-brand-green-dark)]">Best for:</dt>
                 <dd class="text-[var(--color-brand-muted)]">{trip.bestFor}</dd>
@@ -297,7 +297,7 @@ const structuredData = [
         </p>
         <div class="my-6 rounded-xl border border-[var(--color-brand-gold)]/40 bg-[var(--color-brand-cream)] p-4">
           <p class="font-bold text-[var(--color-brand-green-dark)]">Important:</p>
-          <p class="mt-1 text-sm leading-relaxed text-[var(--color-brand-muted)]">
+          <p class="mt-1 text-base leading-8 text-[var(--color-brand-muted)]">
             Your Burundi Guides can help with practical arrival questions, but official visa rules and entry requirements should always be checked with official sources before booking.
           </p>
         </div>

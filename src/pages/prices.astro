@@ -15,9 +15,9 @@ import { site, pageMeta } from '../data/site';
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Pricing</p>
-        <h1 class="text-4xl font-bold mb-4">Burundi Guide Prices</h1>
-        <p class="text-white/80 text-lg">
+        <p class="eyebrow mb-3">Pricing</p>
+        <h1 class="display-title text-balance mb-5 text-5xl md:text-6xl">Burundi Guide Prices</h1>
+        <p class="text-xl leading-9 text-white/80">
           Prices depend on the route, number of people, transport needs, and length of the trip. Contact Gabriel on WhatsApp for a clear quote before you travel.
         </p>
       </div>
@@ -31,7 +31,7 @@ import { site, pageMeta } from '../data/site';
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="card">
         <h2 class="text-xl font-bold text-[var(--color-brand-green-dark)] mb-4">How pricing works</h2>
-        <div class="space-y-3 text-sm text-[var(--color-brand-muted)] leading-relaxed">
+        <div class="space-y-4 text-base leading-8 text-[var(--color-brand-muted)]">
           <p>
             Prices are not fixed because every trip is different. The main factors that affect the total are: the number of people in your group, how many days you need a guide, whether you need private transport, which destinations you want to visit, and whether you need airport pickup.
           </p>
@@ -65,8 +65,8 @@ import { site, pageMeta } from '../data/site';
           <div class="flex items-start gap-3 p-4 rounded-lg bg-[var(--color-brand-bg-light)]">
             <span class="text-lg flex-shrink-0">{item.icon}</span>
             <div>
-              <p class="font-semibold text-sm text-[var(--color-brand-charcoal)]">{item.label}</p>
-              <p class="text-xs text-[var(--color-brand-muted)]">{item.note}</p>
+              <p class="font-semibold text-[var(--color-brand-charcoal)]">{item.label}</p>
+              <p class="text-sm leading-6 text-[var(--color-brand-muted)]">{item.note}</p>
             </div>
           </div>
         ))}

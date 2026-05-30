@@ -21,13 +21,13 @@ const displayServices = preview ? services.slice(0, 4) : services;
       {displayServices.map((service) => (
         <article class="card flex h-full flex-col">
           <h3 class="mb-3 text-lg font-bold text-[var(--color-brand-green-dark)]">{service.title}</h3>
-          <p class="mb-5 text-sm leading-relaxed text-[var(--color-brand-muted)]">{service.description}</p>
+          <p class="mb-5 text-base leading-8 text-[var(--color-brand-muted)]">{service.description}</p>
           {service.bestFor && (
             <div class="mt-auto">
-              <p class="mb-2 text-sm font-bold text-[var(--color-brand-green-dark)]">Best for:</p>
+              <p class="mb-2 text-base font-bold leading-7 text-[var(--color-brand-green-dark)]">Best for:</p>
               <ul class="space-y-2">
                 {service.bestFor.map((item) => (
-                  <li class="flex gap-2 text-sm leading-relaxed text-[var(--color-brand-charcoal)]">
+                  <li class="flex gap-2 text-base leading-7 text-[var(--color-brand-charcoal)]">
                     <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-brand-gold)]"></span>
                     {item}
                   </li>

@@ -38,7 +38,7 @@ const displayFaqs = preview ? faqs.slice(0, 5) : faqs;
             id={`faq-panel-${i}`}
             role="region"
             aria-labelledby={`faq-button-${i}`}
-            class={`mt-3 text-sm leading-relaxed text-[var(--color-brand-muted)] ${i === 0 ? '' : 'hidden'}`}
+            class={`mt-3 text-base leading-8 text-[var(--color-brand-muted)] ${i === 0 ? '' : 'hidden'}`}
           >
             <p>{faq.answer}</p>
           </div>

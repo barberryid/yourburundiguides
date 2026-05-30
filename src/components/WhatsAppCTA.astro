@@ -18,10 +18,10 @@ const isGreen = variant === 'green';
 
 <section id="contact" class={`py-16 md:py-24 ${isGreen ? 'bg-[var(--color-brand-green)] text-white' : 'bg-[var(--color-brand-bg-light)]'}`}>
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class={`text-3xl font-bold mb-4 ${isGreen ? 'text-white' : 'text-[var(--color-brand-green-dark)]'}`}>
+    <h2 class={`display-title text-balance mb-5 text-4xl md:text-5xl ${isGreen ? 'text-white' : 'text-[var(--color-brand-green-dark)]'}`}>
       {heading}
     </h2>
-    <p class={`text-lg mb-8 ${isGreen ? 'text-white/80' : 'text-[var(--color-brand-muted)]'}`}>
+    <p class={`mx-auto mb-8 max-w-2xl text-lg leading-8 ${isGreen ? 'text-white/80' : 'text-[var(--color-brand-muted)]'}`}>
       {subtext}
     </p>
 

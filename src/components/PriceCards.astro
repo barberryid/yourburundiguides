@@ -22,17 +22,17 @@ const displayCards = preview ? priceCards : priceCards;
       {displayCards.map((card) => (
         <article class="card flex flex-col border border-[var(--color-brand-green)]/10">
           <h3 class="mb-3 text-xl font-bold text-[var(--color-brand-green-dark)]">{card.title}</h3>
-          <p class="mb-4 text-sm leading-relaxed text-[var(--color-brand-muted)]">{card.bestFor}</p>
+          <p class="mb-4 text-base leading-8 text-[var(--color-brand-muted)]">{card.bestFor}</p>
           <div class="mb-5 rounded-xl bg-[var(--color-brand-bg-light)] p-4">
             <p class="text-xs font-bold uppercase tracking-wide text-[var(--color-brand-green-dark)]">Quote required:</p>
-            <p class="mt-1 text-sm text-[var(--color-brand-muted)]">{card.note}</p>
+            <p class="mt-1 text-base leading-7 text-[var(--color-brand-muted)]">{card.note}</p>
           </div>
-          <p class="mb-2 text-sm font-bold text-[var(--color-brand-green-dark)]">
+          <p class="mb-2 text-base font-bold leading-7 text-[var(--color-brand-green-dark)]">
             {card.title === 'Custom Burundi trip' ? 'Useful for:' : 'Includes:'}
           </p>
           <ul class="mb-6 flex-grow space-y-2">
             {card.includes.map((item) => (
-              <li class="flex items-start gap-2 text-sm leading-relaxed text-[var(--color-brand-charcoal)]">
+              <li class="flex items-start gap-2 text-base leading-7 text-[var(--color-brand-charcoal)]">
                 <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-brand-green)]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>

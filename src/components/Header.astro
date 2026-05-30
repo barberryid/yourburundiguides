@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
 <header class="sticky top-0 z-40 bg-[var(--color-brand-green-dark)] text-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between gap-4">
-      <a href="/" class="flex min-w-0 items-center gap-3 font-bold hover:opacity-90">
+      <a href="/" class="flex min-w-0 items-center gap-3 font-serif text-xl font-extrabold hover:opacity-90">
         <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-brand-gold)] text-xs font-black text-[var(--color-brand-green-dark)]">YBG</span>
         <span class="truncate">Your Burundi Guides</span>
       </a>
@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
         {navLinks.map((link) => (
           <a
             href={link.href}
-            class={`rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${
+            class={`rounded px-3 py-2 text-sm font-bold transition-colors hover:bg-white/10 ${
               currentPath === link.href || currentPath === link.href.replace(/\/$/, '')
                 ? 'bg-white/20 text-white'
                 : 'text-white/85'
@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname;
           href={site.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden items-center gap-2 rounded-full bg-[#168a42] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0f6d32] sm:flex"
+          class="hidden min-h-11 items-center gap-2 rounded-full bg-[#168a42] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#0f6d32] sm:flex"
         >
           WhatsApp Gabriel
         </a>
@@ -75,7 +75,7 @@ const currentPath = Astro.url.pathname;
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class={`block rounded px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/10 ${
+          class={`block rounded px-3 py-2.5 text-sm font-bold transition-colors hover:bg-white/10 ${
             currentPath === link.href ? 'bg-white/20 text-white' : 'text-white/85'
           }`}
         >
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
         href={site.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-3 flex w-full items-center justify-center rounded-full bg-[#168a42] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0f6d32]"
+        class="mt-3 flex min-h-12 w-full items-center justify-center rounded-full bg-[#168a42] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#0f6d32]"
       >
         WhatsApp Gabriel
       </a>
