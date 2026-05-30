@@ -11,6 +11,99 @@ import FAQ from '../components/FAQ.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { site, pageMeta } from '../data/site';
 
+const trustItems = [
+  'Local guides based in Bujumbura',
+  'English, French and Kirundi spoken',
+  'Airport pickup available',
+  'Clear quote before you travel',
+  'Flexible private trips',
+  'Visitors from 20+ countries',
+];
+
+const jumpLinks = [
+  { href: '#how-it-works', label: 'How it works' },
+  { href: '#guides', label: 'Guides' },
+  { href: '#services', label: 'Services' },
+  { href: '#trips', label: 'Trips' },
+  { href: '#prices', label: 'Prices' },
+  { href: '#reviews', label: 'Reviews' },
+  { href: '#faq', label: 'FAQ' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const steps = [
+  {
+    title: '1. Send your dates on WhatsApp',
+    body: 'Tell Gabriel your travel dates, group size, interests and what kind of help you need.',
+  },
+  {
+    title: '2. Get a realistic local suggestion',
+    body: 'Gabriel explains what is possible, what is practical, and what transport may cost.',
+  },
+  {
+    title: '3. Agree the plan and price',
+    body: 'Confirm the itinerary and quote before you commit.',
+  },
+  {
+    title: '4. Meet in Burundi',
+    body: 'Gabriel or Ernest can help with pickup, guiding, transport, translation and local arrangements.',
+  },
+];
+
+const localGuideReasons = [
+  ['Local knowledge', 'Gabriel and Ernest know Bujumbura and the surrounding regions from the inside.'],
+  ['Practical confidence', 'Ask real questions before and during your trip, and get realistic answers.'],
+  ['Language support', 'Kirundi, French and English support can make daily travel much easier.'],
+  ['Honest guidance', 'The guides will tell you what is accessible, what is not, and what to expect.'],
+  ['Transport sorted', 'Private transport saves time and reduces uncertainty.'],
+  ['Pre-trip planning', 'Get help shaping a realistic itinerary before you arrive.'],
+];
+
+const trips = [
+  {
+    place: 'Lake Tanganyika',
+    desc: "One of the world's deepest lakes, right on Bujumbura's doorstep. Good for swimming, sunsets and relaxed lakeside stops.",
+    bestFor: 'Lake views, swimming, sunsets, easy time near Bujumbura',
+    usually: 'Half-day or relaxed local visit',
+    cta: 'Ask about Lake Tanganyika',
+  },
+  {
+    place: 'Gishora Drum Sanctuary',
+    desc: "Traditional Burundian royal drum performances and one of Burundi's strongest cultural experiences.",
+    bestFor: 'Culture, history, photography, traditional performance',
+    usually: 'Full-day cultural trip from Bujumbura',
+    cta: 'Ask about Gishora',
+  },
+  {
+    place: 'Rusizi National Park',
+    desc: 'Wetlands, hippos, crocodiles and birds close to Bujumbura.',
+    bestFor: 'Wildlife, birds, short nature visits',
+    usually: 'Half-day or short guided visit',
+    cta: 'Ask about Rusizi',
+  },
+  {
+    place: 'Burundi Highlands',
+    desc: 'Rolling green hills, tea plantations and rural villages away from the city.',
+    bestFor: 'Scenery, photography, rural landscapes',
+    usually: 'Full-day or custom route',
+    cta: 'Ask about the highlands',
+  },
+  {
+    place: 'Source of the Nile Area',
+    desc: 'A significant and rarely visited landmark connected to the southernmost source of the Nile River.',
+    bestFor: 'Geography, unusual landmarks, overland travellers',
+    usually: 'Custom day trip',
+    cta: 'Ask about Source of the Nile',
+  },
+  {
+    place: 'Local Markets',
+    desc: 'Busy Bujumbura markets with fresh produce, crafts and local life.',
+    bestFor: 'Local culture, daily life, photography, shopping',
+    usually: 'Short guided city visit',
+    cta: 'Ask about local markets',
+  },
+];
+
 const structuredData = [
   {
     '@context': 'https://schema.org',
@@ -35,7 +128,7 @@ const structuredData = [
       contactType: 'customer support',
       telephone: site.whatsapp,
       email: site.email,
-      availableLanguage: ['English', 'French'],
+      availableLanguage: ['English', 'French', 'Kirundi'],
     },
     priceRange: '$$',
   },
@@ -49,39 +142,19 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Can I book a private guide in Burundi?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Send your dates, number of people, interests, and transport needs by WhatsApp so the guide can suggest a plan and a clear quote before you commit.',
-        },
+      ['Can I book a private guide in Burundi?', 'Yes. Send your dates, number of people, interests and transport needs by WhatsApp so Gabriel can suggest a plan and a clear quote before you commit.'],
+      ['Can you help with transport in Burundi?', 'The guides can arrange private transport for airport pickup, day trips and travel between destinations. Clear prices are agreed before you travel.'],
+      ['Can you help with airport pickup in Bujumbura?', 'Yes. Gabriel or Ernest can meet you at Bujumbura International Airport. Confirm your arrival date, flight time and group size in advance.'],
+      ['Do you offer fixed tours or custom trips?', 'Trips are flexible and adjusted around your interests, available time and travel needs. Gabriel will suggest a realistic plan based on your dates.'],
+      ['Can you help with Burundi visa questions?', 'Gabriel can share practical arrival information, but visa rules can change. Always check the latest official requirements before you travel.'],
+    ].map(([name, text]) => ({
+      '@type': 'Question',
+      name,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text,
       },
-      {
-        '@type': 'Question',
-        name: 'Can you help with airport pickup in Bujumbura?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Gabriel or Ernest can meet you at Bujumbura International Airport and help you get settled on arrival. Arrange this before you fly.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What languages do the guides speak?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Gabriel and Ernest speak English, French, and Kirundi. This covers most situations you will encounter while travelling in Burundi.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do you offer fixed tours or custom trips?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Trips are usually flexible and adjusted around your interests, time, and practical travel needs. Gabriel will suggest a realistic plan based on your dates and what you want to see.',
-        },
-      },
-    ],
+    })),
   },
 ];
 ---
@@ -94,83 +167,107 @@ const structuredData = [
 >
   <Hero />
 
-  <!-- Trust strip -->
-  <div class="bg-[var(--color-brand-green)] py-6">
+  <section aria-label="Trust signals" class="bg-[var(--color-brand-cream)] pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        {[
-          { icon: '🌍', label: 'Visitors from 20+ countries' },
-          { icon: '🗣️', label: 'English, French & Kirundi' },
-          { icon: '📱', label: 'Fast WhatsApp response' },
-          { icon: '🚗', label: 'Private transport available' },
-        ].map((item) => (
-          <div class="text-white">
-            <div class="text-2xl mb-1">{item.icon}</div>
-            <p class="text-sm font-medium text-white/80">{item.label}</p>
-          </div>
+      <div class="rounded-2xl border border-stone-200 bg-[var(--color-brand-bg-light)] p-4 shadow-sm">
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+          {trustItems.map((item) => (
+            <div class="rounded-xl bg-white px-3 py-3 text-sm font-semibold leading-snug text-[var(--color-brand-green-dark)]">
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="Homepage section links" class="bg-[var(--color-brand-cream)] pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        <span class="mr-1 font-bold text-[var(--color-brand-green-dark)]">Jump to:</span>
+        {jumpLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-full border border-stone-300 bg-white px-3 py-2 font-semibold text-[var(--color-brand-green-dark)] transition-colors hover:border-[var(--color-brand-green)] hover:bg-[var(--color-brand-bg-light)]"
+          >
+            {link.label}
+          </a>
         ))}
       </div>
     </div>
-  </div>
+  </nav>
 
-  <GuideProfiles />
-
-  <!-- Services preview -->
-  <ServiceCards preview={true} />
-
-  <!-- Why use a local guide -->
-  <section class="py-16 bg-[var(--color-brand-green-dark)] text-white">
+  <section id="how-it-works" class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Why Travel with a Local Burundi Guide?"
-        subtitle="Burundi is not a destination you find on every travel blog. A local guide makes a real practical difference."
+        title="How booking works"
+        subtitle="A simple way to arrange local guiding, transport and practical help before you arrive in Burundi."
+      />
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step) => (
+          <article class="card">
+            <h3 class="mb-3 text-lg font-bold text-[var(--color-brand-green-dark)]">{step.title}</h3>
+            <p class="text-sm leading-relaxed text-[var(--color-brand-muted)]">{step.body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          Ask Gabriel what is possible
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <GuideProfiles />
+  <ServiceCards preview={true} />
+
+  <section id="why-local-guide" class="py-16 md:py-24 bg-[var(--color-brand-green-dark)] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Why travel with a local Burundi guide?"
+        subtitle="Burundi is not a destination you find on every travel blog. A trusted local guide can make the trip easier, clearer and more flexible."
         light={true}
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { icon: '🧭', title: 'Local knowledge', body: 'Gabriel and Ernest know Bujumbura and the surrounding regions from the inside. They know which roads to take, which places are worth visiting, and how to handle the practicalities.' },
-          { icon: '🔐', title: 'Practical confidence', body: 'Having a trusted local contact before and during your trip removes a lot of uncertainty. You can ask real questions and get real answers.' },
-          { icon: '🗣️', title: 'Language support', body: 'Kirundi is the main local language. Having a guide who speaks Kirundi, French, and English opens doors that would otherwise stay closed.' },
-          { icon: '💡', title: 'Honest guidance', body: 'The guides will tell you honestly what is accessible, what is not, and what to expect on the ground. No overselling.' },
-          { icon: '🚗', title: 'Transport sorted', body: 'Getting around Burundi independently is not straightforward. Having private transport arranged through a local saves time and reduces stress.' },
-          { icon: '📋', title: 'Pre-trip planning', body: 'Gabriel can help you plan your itinerary before you arrive — answering questions, recommending accommodation, and helping you understand what is realistic.' },
-        ].map((item) => (
-          <div class="flex gap-4">
-            <div class="text-2xl flex-shrink-0">{item.icon}</div>
-            <div>
-              <h3 class="font-bold text-[var(--color-brand-gold)] mb-1">{item.title}</h3>
-              <p class="text-white/70 text-sm leading-relaxed">{item.body}</p>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {localGuideReasons.map(([title, body]) => (
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="mb-2 font-bold text-[var(--color-brand-gold)]">{title}</h3>
+            <p class="text-sm leading-relaxed text-white/75">{body}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Experiences preview -->
-  <section class="py-16 bg-[var(--color-brand-bg-light)]">
+  <section id="trips" class="py-16 md:py-24 bg-[var(--color-brand-bg-light)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Burundi Experiences"
-        subtitle="Some of the most popular things to do in Burundi with a local guide."
+        title="Popular Burundi trips"
+        subtitle="Some of the most popular places to visit in Burundi with a local guide."
       />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { icon: '🌊', place: 'Lake Tanganyika', desc: 'One of the world\'s deepest lakes, right on Bujumbura\'s doorstep. Swimming, sunsets, and lakeside stops.' },
-          { icon: '🥁', place: 'Gishora Drum Sanctuary', desc: 'Traditional Burundian royal drum performances. A cultural experience unlike anything else in the region.' },
-          { icon: '🐊', place: 'Rusizi National Park', desc: 'Hippos, crocodiles, and wetland birds just outside Bujumbura. Short guided visits available.' },
-          { icon: '🏔️', place: 'Burundi Highlands', desc: 'Rolling green hills, tea plantations, and rural villages away from the city.' },
-          { icon: '🏛️', place: 'Source of the Nile Area', desc: 'The southernmost source of the Nile River — a significant and rarely visited landmark.' },
-          { icon: '🛒', place: 'Local Markets', desc: 'Busy Bujumbura markets with fresh produce, crafts, and local life. Best explored with a guide who knows the area.' },
-        ].map((item) => (
-          <div class="card hover:shadow-lg transition-shadow">
-            <div class="text-3xl mb-3">{item.icon}</div>
-            <h3 class="font-bold text-[var(--color-brand-green-dark)] mb-2">{item.place}</h3>
-            <p class="text-[var(--color-brand-muted)] text-sm leading-relaxed">{item.desc}</p>
-          </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {trips.map((trip) => (
+          <article class="card flex flex-col">
+            <h3 class="mb-3 text-xl font-bold text-[var(--color-brand-green-dark)]">{trip.place}</h3>
+            <p class="mb-5 text-sm leading-relaxed text-[var(--color-brand-muted)]">{trip.desc}</p>
+            <dl class="mb-6 grid gap-4 text-sm">
+              <div>
+                <dt class="font-bold text-[var(--color-brand-green-dark)]">Best for:</dt>
+                <dd class="text-[var(--color-brand-muted)]">{trip.bestFor}</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-[var(--color-brand-green-dark)]">Usually:</dt>
+                <dd class="text-[var(--color-brand-muted)]">{trip.usually}</dd>
+              </div>
+            </dl>
+            <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp mt-auto justify-center text-sm">
+              {trip.cta}
+            </a>
+          </article>
         ))}
       </div>
-      <div class="text-center mt-10">
+      <div class="mt-10 text-center">
         <a href="/things-to-do/" class="btn-green">
           Explore things to do in Burundi with a local guide
         </a>
@@ -181,8 +278,7 @@ const structuredData = [
   <PriceCards preview={true} />
   <ReviewCards preview={true} />
 
-  <!-- Photos preview -->
-  <section class="py-16 bg-white">
+  <section id="photos" class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
         title="Photos from Burundi"
@@ -192,66 +288,24 @@ const structuredData = [
     </div>
   </section>
 
-  <!-- Visa preview -->
-  <section class="py-12 bg-[var(--color-brand-bg-light)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="card max-w-2xl mx-auto text-center">
-        <div class="text-4xl mb-4">📋</div>
-        <h2 class="text-2xl font-bold text-[var(--color-brand-green-dark)] mb-3">Burundi Visa &amp; Arrival Help</h2>
-        <p class="text-[var(--color-brand-muted)] mb-4">
-          Gabriel can share practical information about arriving in Burundi and what to expect at the airport. Visa rules can change — always check official requirements before you travel.
+  <section id="visa-arrival" class="py-16 md:py-24 bg-[var(--color-brand-bg-light)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card">
+        <h2 class="mb-4 text-2xl font-bold text-[var(--color-brand-green-dark)]">Burundi visa and arrival help</h2>
+        <p class="max-w-3xl text-base leading-relaxed text-[var(--color-brand-muted)]">
+          Gabriel can share practical information about arriving in Burundi and what to expect at the airport. Visa rules can change, so always check official requirements before you travel.
         </p>
+        <div class="my-6 rounded-xl border border-[var(--color-brand-gold)]/40 bg-[var(--color-brand-cream)] p-4">
+          <p class="font-bold text-[var(--color-brand-green-dark)]">Important:</p>
+          <p class="mt-1 text-sm leading-relaxed text-[var(--color-brand-muted)]">
+            Your Burundi Guides can help with practical arrival questions, but official visa rules and entry requirements should always be checked with official sources before booking.
+          </p>
+        </div>
         <a href="/visa/" class="btn-green">Read Burundi visa and arrival info</a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        title="Common Questions"
-        subtitle="Things travellers often ask before visiting Burundi."
-      />
-      <div class="space-y-4">
-        {[
-          {
-            q: 'Can I book a private guide in Burundi?',
-            a: 'Yes. Send your dates, number of people, interests, and transport needs by WhatsApp so Gabriel can suggest a plan and a clear quote before you commit.',
-          },
-          {
-            q: 'Can you help with transport in Burundi?',
-            a: 'The guides can arrange private transport for airport pickup, day trips, and travel between destinations. Clear prices are agreed before you travel.',
-          },
-          {
-            q: 'Can you help with airport pickup in Bujumbura?',
-            a: 'Yes. Gabriel or Ernest can meet you at Bujumbura International Airport. Confirm your arrival date, flight time, and group size in advance.',
-          },
-          {
-            q: 'Do you offer fixed tours or custom trips?',
-            a: 'Trips are flexible and adjusted around your interests, available time, and travel needs. Gabriel will suggest a realistic plan based on your dates.',
-          },
-          {
-            q: 'Can you help with Burundi visa questions?',
-            a: 'Gabriel can share practical arrival information, but visa rules can change. Always check the latest official requirements before you travel.',
-          },
-        ].map((faq) => (
-          <details class="group card border border-gray-100 cursor-pointer" name="home-faq">
-            <summary class="flex items-center justify-between gap-4 list-none font-semibold text-[var(--color-brand-green-dark)] cursor-pointer select-none">
-              {faq.q}
-              <svg class="w-5 h-5 flex-shrink-0 text-[var(--color-brand-green)] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p class="mt-3 text-[var(--color-brand-muted)] text-sm leading-relaxed">{faq.a}</p>
-          </details>
-        ))}
-      </div>
-      <div class="text-center mt-8">
-        <a href="/contact/" class="btn-green">Ask Gabriel directly on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
+  <FAQ preview={true} />
   <WhatsAppCTA />
 </BaseLayout>

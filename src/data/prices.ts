@@ -1,5 +1,6 @@
 export interface PriceCard {
   title: string;
+  bestFor: string;
   note: string;
   includes: string[];
   cta: string;
@@ -7,48 +8,40 @@ export interface PriceCard {
 
 export const priceCards: PriceCard[] = [
   {
-    title: 'Half-Day Tour',
-    note: 'Price depends on route, group size, and transport needs. Contact Gabriel for a clear quote.',
+    title: 'Half-day guiding',
+    bestFor: 'Best for Bujumbura, markets, Lake Tanganyika, arrival help or short cultural visits.',
+    note: 'Price depends on route, group size and transport needs.',
     includes: [
       'Up to 4 hours with a local guide',
-      'Private transport within Bujumbura area',
-      'English, French, or Kirundi guidance',
+      'Private transport within the Bujumbura area when requested',
+      'English, French or Kirundi guidance',
       'Flexible itinerary based on your interests',
     ],
     cta: 'Ask for a half-day quote',
   },
   {
-    title: 'Full-Day Tour',
-    note: 'Price depends on destination, group size, and transport needs. Contact Gabriel for a clear quote.',
+    title: 'Full-day guiding',
+    bestFor: 'Best for Gishora Drum Sanctuary, Rusizi, the highlands, Source of the Nile area or custom routes.',
+    note: 'Price depends on destination, group size and transport needs.',
     includes: [
       'Up to 8 hours with a local guide',
       'Private transport to your chosen destinations',
-      'English, French, or Kirundi guidance',
+      'English, French or Kirundi guidance',
       'Lunch stop arranged if requested',
       'Custom itinerary planned before you travel',
     ],
     cta: 'Ask for a full-day quote',
   },
   {
-    title: 'Airport Pickup',
-    note: 'Fixed route from Bujumbura International Airport. Ask Gabriel for the current price.',
+    title: 'Custom Burundi trip',
+    bestFor: 'Best if you have several days, specific interests, business travel, family travel or unusual logistics.',
+    note: 'Gabriel will suggest what is realistic based on your dates and route.',
     includes: [
-      'Meet and greet at the airport',
-      'Help with arrival formalities',
-      'Private transport to your accommodation',
-      'Local SIM and currency advice',
+      'Multi-day plans',
+      'Airport pickup plus day trips',
+      'Translation and transport support',
+      'Flexible itineraries',
     ],
-    cta: 'Ask about airport pickup',
-  },
-  {
-    title: 'Multi-Day Package',
-    note: 'Prices depend on the number of days, destinations, accommodation needs, and group size.',
-    includes: [
-      'Full daily guiding and transport',
-      'Custom itinerary planned with you in advance',
-      'Accommodation recommendations',
-      'Flexible schedule adjustments during the trip',
-    ],
-    cta: 'Plan a multi-day trip',
+    cta: 'Ask for a custom quote',
   },
 ];

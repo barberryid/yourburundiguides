@@ -2,36 +2,64 @@
 import { site } from '../data/site';
 import SectionHeading from './SectionHeading.astro';
 
-const guides = [site.guides.gabriel, site.guides.ernest];
+const guides = [
+  {
+    ...site.guides.gabriel,
+    goodFor: [
+      'Trip planning before arrival',
+      'Private guiding in Bujumbura and beyond',
+      'Airport pickup and arrival support',
+      'Translation between English, French and Kirundi',
+      'Realistic local advice about what is possible',
+    ],
+  },
+  {
+    ...site.guides.ernest,
+    goodFor: [
+      'Airport pickups',
+      'Private day trips',
+      'Transport around Burundi',
+      'Practical support on the road',
+      'Local guidance during visits',
+    ],
+  },
+];
 ---
 
-<section class="py-16 bg-white">
+<section id="guides" class="py-16 md:py-24 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <SectionHeading
-      title="Meet Your Guides"
-      subtitle="Gabriel and Ernest are local guides based in Bujumbura. They have helped travellers from across the world explore Burundi."
+      title="Meet your Burundi guides"
+      subtitle="Gabriel and Ernest are local guides based in Bujumbura. They help independent travellers, small groups and visitors who want practical local support in Burundi."
     />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       {guides.map((guide) => (
-        <div class="card flex flex-col items-center text-center sm:items-start sm:text-left sm:flex-row gap-6">
-          <div class="flex-shrink-0">
-            <div class="w-24 h-24 rounded-full overflow-hidden bg-[var(--color-brand-bg-light)] border-4 border-[var(--color-brand-green)]/20">
-              <img
-                src={guide.image}
-                alt={guide.alt}
-                class="w-full h-full object-cover"
-                loading="lazy"
-                onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-[var(--color-brand-bg-light)]\'>👤</div>'"
-              />
-            </div>
-          </div>
+        <article class="card grid gap-5 sm:grid-cols-[8rem_1fr]">
+          <img
+            src={guide.image}
+            alt={guide.alt}
+            class="h-32 w-32 rounded-xl object-cover"
+            loading="lazy"
+            decoding="async"
+            width="320"
+            height="320"
+          />
           <div>
-            <h3 class="text-xl font-bold text-[var(--color-brand-green-dark)] mb-1">{guide.name}</h3>
-            <p class="text-[var(--color-brand-gold)] text-sm font-semibold mb-3">{guide.role}</p>
-            <p class="text-[var(--color-brand-muted)] text-sm leading-relaxed">{guide.bio}</p>
+            <h3 class="text-xl font-bold text-[var(--color-brand-green-dark)]">{guide.name}</h3>
+            <p class="mb-3 text-sm font-semibold text-[var(--color-brand-gold)]">{guide.role}</p>
+            <p class="mb-4 text-sm leading-relaxed text-[var(--color-brand-muted)]">{guide.bio}</p>
+            <p class="mb-2 text-sm font-bold text-[var(--color-brand-green-dark)]">Good for:</p>
+            <ul class="space-y-2">
+              {guide.goodFor.map((item) => (
+                <li class="flex gap-2 text-sm leading-relaxed text-[var(--color-brand-charcoal)]">
+                  <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-brand-green)]"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>

@@ -24,6 +24,8 @@
     background-color: var(--color-brand-cream);
     color: var(--color-brand-charcoal);
     font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
   }
 
   h1, h2, h3, h4, h5 {
@@ -33,6 +35,17 @@
 
   a {
     color: inherit;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand-gold);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
   }
 }
 
@@ -48,6 +61,40 @@
     border-radius: 0.5rem;
     text-decoration: none;
     transition: background-color 0.2s;
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #168a42;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .btn-whatsapp:hover {
+    background-color: #0f6d32;
+  }
+
+  .btn-outline-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--color-brand-green-dark);
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid #cfc8bc;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .btn-outline-dark:hover {
+    background-color: #fff;
+    border-color: var(--color-brand-green);
   }
   .btn-primary:hover {
     background-color: var(--color-brand-red-dark);
@@ -79,7 +126,7 @@
     color: #fff;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 999px;
     text-decoration: none;
     transition: background-color 0.2s;
   }
@@ -103,7 +150,33 @@
   .card {
     background: #fff;
     border-radius: 1rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid #e6ded2;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     padding: 1.5rem;
+  }
+
+  .mobile-sticky-whatsapp {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 5.5rem;
+    }
+
+    .mobile-sticky-whatsapp {
+      position: fixed;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 50;
+      display: inline-flex;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.9rem 1rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
   }
 }

@@ -3,14 +3,15 @@ export const site = {
   siteUrl: 'https://www.yourburundiguides.com',
   tagline: 'Private Local Guides in Burundi',
 
-  defaultTitle: 'Your Burundi Guides | Private Local Guides in Burundi',
+  defaultTitle: 'Private Local Guides in Burundi | Your Burundi Guides',
   defaultDescription:
-    'Plan your Burundi trip with trusted local guides. Private guiding, transport help, airport pickup, translation, custom day trips, and practical support before and during your visit.',
+    'Plan your Burundi trip with trusted local guides in Bujumbura. Airport pickup, private transport, translation, custom day trips and practical support before you arrive.',
   defaultOgImage: 'https://www.yourburundiguides.com/images/og/your-burundi-guides-og.jpg',
   defaultLocale: 'en_GB',
 
   whatsapp: '+257 69 52 87 84',
-  whatsappLink: 'https://wa.me/25769528784',
+  whatsappLink:
+    'https://wa.me/25769528784?text=Hello%20Gabriel%2C%20I%20am%20planning%20a%20trip%20to%20Burundi.%20My%20dates%20are%20%5Bdates%5D.%20We%20are%20%5Bnumber%5D%20people.%20I%20am%20interested%20in%20%5Bplaces%2Fservices%5D.%20Can%20you%20please%20help%20me%20with%20a%20guide%2C%20transport%20and%20a%20quote%3F',
   email: 'info@burundiguides.com',
 
   guides: {
@@ -18,7 +19,7 @@ export const site = {
       name: 'Gabriel Ndikumana',
       firstName: 'Gabriel',
       role: 'Lead Guide & Founder',
-      bio: 'Gabriel is a local Bujumbura guide with years of experience helping travellers navigate Burundi safely and comfortably. He speaks English, French, and Kirundi, and can help with transport, translation, custom itineraries, and practical arrangements before and during your trip.',
+      bio: 'Gabriel is a local Bujumbura guide with years of experience helping travellers navigate Burundi safely and comfortably.',
       image: '/images/guides/gabriel-burundi-guide.jpg',
       alt: 'Gabriel Ndikumana, local Burundi guide, helping visitors during a private trip',
     },
@@ -26,7 +27,7 @@ export const site = {
       name: 'Ernest Bukuru',
       firstName: 'Ernest',
       role: 'Guide & Driver',
-      bio: 'Ernest is an experienced local guide and driver. He knows Bujumbura and the surrounding regions well and can help with airport pickups, day trips, and transport around Burundi.',
+      bio: 'Ernest is an experienced local guide and driver who knows Bujumbura and the surrounding regions well.',
       image: '/images/guides/ernest-burundi-guide.jpg',
       alt: 'Ernest Bukuru, local Burundi guide and driver',
     },
@@ -35,9 +36,9 @@ export const site = {
 
 export const pageMeta = {
   home: {
-    title: 'Your Burundi Guides | Private Local Guides in Burundi',
+    title: 'Private Local Guides in Burundi | Your Burundi Guides',
     description:
-      'Plan your Burundi trip with trusted local guides. Private guiding, transport help, airport pickup, translation, custom day trips, and practical support before and during your visit.',
+      'Plan your Burundi trip with trusted local guides in Bujumbura. Airport pickup, private transport, translation, custom day trips and practical support before you arrive.',
   },
   services: {
     title: 'Burundi Guiding Services | Private Guide, Transport and Travel Help',
