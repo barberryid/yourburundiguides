@@ -3,13 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PriceCards from '../components/PriceCards.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { site } from '../data/site';
+import { site, pageMeta } from '../data/site';
 ---
 
 <BaseLayout
-  title="Burundi Guide Prices | Your Burundi Guides"
-  description="Pricing for private guiding, airport pickup, transport, and custom day trips in Burundi. Contact Gabriel on WhatsApp for a clear quote before you travel."
-  canonical="https://www.yourburundiguides.com/prices/"
+  title={pageMeta.prices.title}
+  description={pageMeta.prices.description}
+  canonical={`${site.siteUrl}/prices/`}
 >
   <!-- Page header -->
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
@@ -46,7 +46,7 @@ import { site } from '../data/site';
     </div>
   </section>
 
-  <!-- What's included -->
+  <!-- What is included -->
   <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
@@ -70,6 +70,17 @@ import { site } from '../data/site';
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- Internal links -->
+      <div class="mt-10 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/services/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          View all private guiding services in Burundi
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Ask Gabriel for a Burundi guide quote
+        </a>
       </div>
     </div>
   </section>

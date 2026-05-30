@@ -3,19 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ReviewCards from '../components/ReviewCards.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import { reviews } from '../data/reviews';
+import { site, pageMeta } from '../data/site';
 ---
 
 <BaseLayout
-  title="Reviews | Your Burundi Guides"
-  description="Read what visitors say about travelling in Burundi with Gabriel and Ernest — private guides based in Bujumbura."
-  canonical="https://www.yourburundiguides.com/reviews/"
+  title={pageMeta.reviews.title}
+  description={pageMeta.reviews.description}
+  canonical={`${site.siteUrl}/reviews/`}
 >
   <!-- Page header -->
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
         <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Visitor Reviews</p>
-        <h1 class="text-4xl font-bold mb-4">What Visitors Say</h1>
+        <h1 class="text-4xl font-bold mb-4">Reviews from Travellers</h1>
         <p class="text-white/80 text-lg">
           Experiences from travellers who have visited Burundi with Gabriel and Ernest.
         </p>
@@ -37,10 +38,23 @@ import { reviews } from '../data/reviews';
               alt={review.alt}
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               loading="lazy"
+              width="400"
+              height="400"
               onerror="this.parentElement.style.display='none'"
             />
           </div>
         ))}
+      </div>
+
+      <!-- Internal links -->
+      <div class="mt-10 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/services/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          View private guiding services in Burundi
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Contact Gabriel on WhatsApp
+        </a>
       </div>
     </div>
   </section>

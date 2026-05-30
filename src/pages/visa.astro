@@ -2,12 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import { site, pageMeta } from '../data/site';
 ---
 
 <BaseLayout
-  title="Burundi Visa and Arrival Help | Your Burundi Guides"
-  description="Practical information about arriving in Burundi. Visa on arrival, airport arrival, and what to expect. Always check official requirements before you travel."
-  canonical="https://www.yourburundiguides.com/visa/"
+  title={pageMeta.visa.title}
+  description={pageMeta.visa.description}
+  canonical={`${site.siteUrl}/visa/`}
 >
   <!-- Important disclaimer banner -->
   <div class="bg-amber-50 border-b border-amber-200 py-3">
@@ -26,7 +27,7 @@ import SectionHeading from '../components/SectionHeading.astro';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
         <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Arrival Information</p>
-        <h1 class="text-4xl font-bold mb-4">Burundi Visa &amp; Arrival Help</h1>
+        <h1 class="text-4xl font-bold mb-4">Burundi Visa and Arrival Help</h1>
         <p class="text-white/80 text-lg">
           Practical information about what to expect when arriving in Burundi. Gabriel can also help you understand local practicalities on the ground.
         </p>
@@ -118,6 +119,17 @@ import SectionHeading from '../components/SectionHeading.astro';
         Gabriel can help you understand practical day-to-day realities in Bujumbura. He cannot guarantee safety, but travelling with a knowledgeable local guide significantly reduces the risk of common traveller problems.
       </p>
     </section>
+
+    <!-- Internal links -->
+    <div class="flex flex-wrap gap-4 text-sm pt-2">
+      <a href="/services/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+        See all private guiding services in Burundi
+      </a>
+      <span class="text-gray-300">·</span>
+      <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+        Contact Gabriel on WhatsApp
+      </a>
+    </div>
   </div>
 
   <WhatsAppCTA

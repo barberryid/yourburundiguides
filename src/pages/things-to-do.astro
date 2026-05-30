@@ -2,13 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "name": "Things to Do in Burundi",
-  "url": "https://www.yourburundiguides.com/things-to-do/"
-};
+import { site, pageMeta } from '../data/site';
 
 const destinations = [
   {
@@ -57,7 +51,7 @@ const destinations = [
     icon: '🛒',
     name: 'Local Markets',
     area: 'Bujumbura',
-    description: 'Bujumbura\'s central market is a dense, energetic place selling fresh produce, household goods, clothes, and local crafts. It\'s a real cross-section of daily life. Having Gabriel with you makes the experience much richer — he can introduce you to vendors, explain what you\'re seeing, and help you find things worth buying.',
+    description: 'Bujumbura\'s central market is a dense, energetic place selling fresh produce, household goods, clothes, and local crafts. Having Gabriel with you makes the experience much richer — he can introduce you to vendors, explain what you\'re seeing, and help you find things worth buying.',
     tips: ['Central Market is the main one', 'Morning is the busiest', 'Best with a guide who knows the layout'],
   },
   {
@@ -68,15 +62,28 @@ const destinations = [
     tips: ['Arrange in advance', 'Be flexible — these visits depend on local availability', 'Bring a respectful and open attitude'],
   },
 ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Things to Do in Burundi',
+  description: pageMeta.thingsToDo.description,
+  url: `${site.siteUrl}/things-to-do/`,
+  itemListElement: destinations.map((d, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: d.name,
+    description: d.description,
+  })),
+};
 ---
 
 <BaseLayout
-  title="Things to Do in Burundi | Your Burundi Guides"
-  description="Discover Burundi's best experiences — Lake Tanganyika, Gishora Drum Sanctuary, Rusizi National Park, the highlands, local markets, and Bujumbura city."
-  canonical="https://www.yourburundiguides.com/things-to-do/"
+  title={pageMeta.thingsToDo.title}
+  description={pageMeta.thingsToDo.description}
+  canonical={`${site.siteUrl}/things-to-do/`}
+  structuredData={structuredData}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-
   <!-- Page header -->
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +91,7 @@ const destinations = [
         <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Experiences</p>
         <h1 class="text-4xl font-bold mb-4">Things to Do in Burundi</h1>
         <p class="text-white/80 text-lg">
-          A guide to the most rewarding experiences in Burundi — from Lake Tanganyika to the highlands, cultural ceremonies to local markets.
+          A guide to the most rewarding Burundi experiences — from Lake Tanganyika and the Gishora Drum Sanctuary to the highlands, cultural visits, and local markets.
         </p>
       </div>
     </div>
@@ -117,13 +124,28 @@ const destinations = [
         ))}
       </div>
 
-      <!-- Planning note -->
+      <!-- CTA card -->
       <div class="mt-12 card bg-[var(--color-brand-green-dark)] text-white text-center max-w-2xl mx-auto">
-        <h2 class="text-xl font-bold mb-3">Want help planning your itinerary?</h2>
+        <h2 class="text-xl font-bold mb-3">Want help planning your Burundi itinerary?</h2>
         <p class="text-white/75 text-sm mb-4">
           Gabriel can help you build a realistic day-by-day plan based on your travel dates, group size, and interests. Tell him what you want to see and he will suggest what is practical.
         </p>
-        <a href="/contact/" class="btn-primary inline-flex">Plan my Burundi trip</a>
+        <a href="/contact/" class="btn-primary inline-flex">Plan my Burundi trip with a local guide</a>
+      </div>
+
+      <!-- Internal links -->
+      <div class="mt-10 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/services/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          View private guiding services in Burundi
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/prices/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Ask for a Burundi guide price quote
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Contact Gabriel on WhatsApp
+        </a>
       </div>
     </div>
   </section>

@@ -3,24 +3,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { site } from '../data/site';
+import { site, pageMeta } from '../data/site';
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "TouristInformationCenter",
-  "name": "Your Burundi Guides – Services",
-  "url": "https://www.yourburundiguides.com/services/",
-  "description": "Private guiding, transport, airport pickup, translation, and custom day trips in Burundi."
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Burundi Guiding Services',
+  description: pageMeta.services.description,
+  url: `${site.siteUrl}/services/`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Private guiding in Burundi' },
+    { '@type': 'ListItem', position: 2, name: 'Airport pickup and arrival support in Bujumbura' },
+    { '@type': 'ListItem', position: 3, name: 'Private transport and driver support in Burundi' },
+    { '@type': 'ListItem', position: 4, name: 'Translation and local communication (English, French, Kirundi)' },
+    { '@type': 'ListItem', position: 5, name: 'Custom day trips from Bujumbura' },
+    { '@type': 'ListItem', position: 6, name: 'Multi-day Burundi itinerary support' },
+  ],
 };
 ---
 
 <BaseLayout
-  title="Burundi Guiding Services | Your Burundi Guides"
-  description="Private guiding, airport pickup, transport, translation, custom day trips, and multi-day itineraries in Burundi. Contact Gabriel for a clear quote."
-  canonical="https://www.yourburundiguides.com/services/"
+  title={pageMeta.services.title}
+  description={pageMeta.services.description}
+  canonical={`${site.siteUrl}/services/`}
+  structuredData={structuredData}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-
   <!-- Page header -->
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,14 +35,16 @@ const schema = {
         <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">What We Offer</p>
         <h1 class="text-4xl font-bold mb-4">Burundi Guiding Services</h1>
         <p class="text-white/80 text-lg">
-          Gabriel and Ernest offer practical local support for independent travellers visiting Burundi. From airport pickup to custom multi-day trips.
+          Gabriel and Ernest offer practical local support for independent travellers visiting Burundi. From airport pickup to custom multi-day trips — see the full range of <a href="/services/#service-list" class="underline hover:text-white">private guiding services</a> below.
         </p>
       </div>
     </div>
   </div>
 
   <!-- All services grid -->
-  <ServiceCards preview={false} />
+  <div id="service-list">
+    <ServiceCards preview={false} />
+  </div>
 
   <!-- How it works -->
   <section class="py-16 bg-white">
@@ -59,10 +68,25 @@ const schema = {
           </div>
         ))}
       </div>
+
+      <!-- Internal links -->
+      <div class="mt-12 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/prices/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          See Burundi guide prices
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/things-to-do/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Things to do in Burundi with a local guide
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Contact Gabriel on WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- FAQ-style service notes -->
+  <!-- Practical notes -->
   <section class="py-12 bg-[var(--color-brand-bg-light)]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading
@@ -88,6 +112,6 @@ const schema = {
 
   <WhatsAppCTA
     heading="Ready to plan your Burundi trip?"
-    subtext="Message Gabriel on WhatsApp with your dates, group size, and what you want to do. He will reply with options and prices."
+    subtext="Message Gabriel on WhatsApp with your dates, group size, and what you want to do. He will reply with options and a clear price."
   />
 </BaseLayout>

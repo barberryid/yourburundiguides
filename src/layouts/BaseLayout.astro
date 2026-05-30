@@ -2,22 +2,47 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
-  ogImage?: string;
   canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  structuredData?: object | object[];
 }
 
 const {
-  title,
-  description = 'Plan your Burundi trip with trusted local guides. Private guiding, transport help, airport pickup, translation, custom day trips, and practical support before and during your visit.',
-  ogImage = '/images/hero/burundi-local-guides-hero.jpg',
+  title = site.defaultTitle,
+  description = site.defaultDescription,
   canonical,
+  ogTitle,
+  ogDescription,
+  ogImage = site.defaultOgImage,
+  ogType = 'website',
+  noindex = false,
+  structuredData,
 } = Astro.props;
 
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://www.yourburundiguides.com').href;
+const canonicalUrl = canonical
+  ? (canonical.startsWith('http') ? canonical : `${site.siteUrl}${canonical}`)
+  : new URL(Astro.url.pathname, site.siteUrl).href;
+
+// Ensure OG image is absolute
+const ogImageAbsolute = ogImage.startsWith('http')
+  ? ogImage
+  : `${site.siteUrl}${ogImage}`;
+
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDesc = ogDescription ?? description;
+
+const sdArray = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
 ---
 
 <!doctype html>
@@ -25,34 +50,53 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://www.yourb
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a5c38" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow" />
+    }
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.defaultLocale} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDesc} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Your Burundi Guides" />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Your Burundi Guides — private local guides in Burundi" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDesc} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
 
-    <!-- Fonts -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts: preconnect first, then load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Structured data -->
+    {sdArray.map((sd) => (
+      <script type="application/ld+json" set:html={JSON.stringify(sd)} />
+    ))}
   </head>
   <body>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

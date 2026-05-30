@@ -3,12 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import { galleryImages } from '../data/gallery';
+import { site, pageMeta } from '../data/site';
 ---
 
 <BaseLayout
-  title="Burundi Travel Photos | Your Burundi Guides"
-  description="Photos from guided trips in Burundi — Lake Tanganyika, cultural experiences, the countryside, and Bujumbura."
-  canonical="https://www.yourburundiguides.com/photos/"
+  title={pageMeta.photos.title}
+  description={pageMeta.photos.description}
+  canonical={`${site.siteUrl}/photos/`}
 >
   <!-- Page header -->
   <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
@@ -26,6 +27,17 @@ import { galleryImages } from '../data/gallery';
   <section class="py-16 bg-[var(--color-brand-cream)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <GalleryGrid preview={false} limit={galleryImages.length} />
+
+      <!-- Internal links -->
+      <div class="mt-12 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/services/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          View private guiding services in Burundi
+        </a>
+        <span class="text-gray-300">·</span>
+        <a href="/contact/" class="text-[var(--color-brand-green)] underline hover:text-[var(--color-brand-green-dark)]">
+          Plan your own Burundi trip with Gabriel
+        </a>
+      </div>
     </div>
   </section>
 

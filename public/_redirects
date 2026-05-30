@@ -1,0 +1,17 @@
+# Old Google Sites URL paths → new Astro routes (301 permanent)
+/home                    /                        301
+/best-things-to-do       /things-to-do/           301
+/burundi-visa-easy       /visa/                   301
+
+# Trailing-slash normalisation for non-trailing URLs
+/services                /services/               301
+/prices                  /prices/                 301
+/visa                    /visa/                   301
+/photos                  /photos/                 301
+/reviews                 /reviews/                301
+/things-to-do            /things-to-do/           301
+/contact                 /contact/                301
+
+# Old photo sub-pages from Google Sites
+/photos/2020-photos      /photos/                 301
+/photos/2024-photos      /photos/                 301
