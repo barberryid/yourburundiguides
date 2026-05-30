@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout
+  title="Burundi Visa and Arrival Help | Your Burundi Guides"
+  description="Practical information about arriving in Burundi. Visa on arrival, airport arrival, and what to expect. Always check official requirements before you travel."
+  canonical="https://www.yourburundiguides.com/visa/"
+>
+  <!-- Important disclaimer banner -->
+  <div class="bg-amber-50 border-b border-amber-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-amber-800 text-sm flex items-start gap-2">
+        <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+        <strong>Important:</strong>&nbsp;Visa rules and entry requirements for Burundi can change at any time. Always check the latest official information from your government travel service and the Burundian Embassy before booking your trip.
+      </p>
+    </div>
+  </div>
+
+  <!-- Page header -->
+  <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Arrival Information</p>
+        <h1 class="text-4xl font-bold mb-4">Burundi Visa &amp; Arrival Help</h1>
+        <p class="text-white/80 text-lg">
+          Practical information about what to expect when arriving in Burundi. Gabriel can also help you understand local practicalities on the ground.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+
+    <!-- Visa overview -->
+    <section>
+      <h2 class="text-2xl font-bold text-[var(--color-brand-green-dark)] mb-4">Visa overview</h2>
+      <div class="prose prose-sm text-[var(--color-brand-muted)] space-y-4">
+        <p>
+          Many nationalities can obtain a visa on arrival at Bujumbura International Airport, or apply for an e-visa before travelling. Requirements vary by nationality and can change.
+        </p>
+        <p>
+          Before you travel, check whether your passport nationality requires a visa in advance and what supporting documents you may need.
+        </p>
+        <p class="font-semibold text-[var(--color-brand-charcoal)]">
+          Always verify the current requirements with your government's official travel advice service and, if needed, with the Burundian Embassy or consulate in your country.
+        </p>
+      </div>
+    </section>
+
+    <!-- Arrival at Bujumbura airport -->
+    <section>
+      <h2 class="text-2xl font-bold text-[var(--color-brand-green-dark)] mb-4">Arriving at Bujumbura International Airport</h2>
+      <div class="space-y-4 text-sm text-[var(--color-brand-muted)] leading-relaxed">
+        <p>Bujumbura International Airport (BJM) is a small, manageable airport. The arrival process is generally straightforward, though wait times can vary.</p>
+
+        <div class="card border border-[var(--color-brand-green)]/10">
+          <h3 class="font-semibold text-[var(--color-brand-green-dark)] mb-3">What to expect on arrival</h3>
+          <ul class="space-y-2">
+            {[
+              'Immigration and visa processing on arrival (if applicable)',
+              'Baggage collection in a compact arrivals hall',
+              'Currency exchange at the airport (rates vary — Gabriel can advise on better options in the city)',
+              'Local SIM cards available near the airport or in the city',
+              'Taxis available outside arrivals — having a pickup arranged in advance is recommended',
+            ].map((item) => (
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-[var(--color-brand-green)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Gabriel can help -->
+    <section>
+      <h2 class="text-2xl font-bold text-[var(--color-brand-green-dark)] mb-4">How Gabriel can help with arrival</h2>
+      <div class="space-y-4">
+        {[
+          { icon: '✈️', title: 'Airport pickup', body: 'Gabriel or Ernest can meet you at the airport and drive you to your accommodation. This removes the stress of finding transport on arrival in an unfamiliar city.' },
+          { icon: '💬', title: 'Arrival advice', body: 'Gabriel can answer questions about what to bring, what to expect at immigration, how to get local currency, and what to do on your first day.' },
+          { icon: '📋', title: 'Practical local knowledge', body: 'He can share up-to-date information about current conditions in the city, which areas you will stay in, and how to stay comfortable during your visit.' },
+        ].map((item) => (
+          <div class="card flex gap-4">
+            <div class="text-2xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <h3 class="font-bold text-[var(--color-brand-green-dark)] mb-1">{item.title}</h3>
+              <p class="text-[var(--color-brand-muted)] text-sm">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Safety note -->
+    <section class="bg-[var(--color-brand-bg-light)] rounded-xl p-6">
+      <h2 class="text-xl font-bold text-[var(--color-brand-green-dark)] mb-3">A note on travel safety</h2>
+      <p class="text-sm text-[var(--color-brand-muted)] leading-relaxed mb-3">
+        Burundi has specific risks that travellers should research carefully before booking. We recommend checking the current travel advice from your government before you travel.
+      </p>
+      <p class="text-sm text-[var(--color-brand-muted)] leading-relaxed">
+        Gabriel can help you understand practical day-to-day realities in Bujumbura. He cannot guarantee safety, but travelling with a knowledgeable local guide significantly reduces the risk of common traveller problems.
+      </p>
+    </section>
+  </div>
+
+  <WhatsAppCTA
+    heading="Questions about arriving in Burundi?"
+    subtext="Message Gabriel on WhatsApp. He can answer practical questions about what to expect before and on arrival."
+    variant="green"
+  />
+</BaseLayout>

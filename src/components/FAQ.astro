@@ -1,0 +1,44 @@
+---
+import { faqs } from '../data/faqs';
+import SectionHeading from './SectionHeading.astro';
+
+interface Props {
+  preview?: boolean;
+}
+
+const { preview = false } = Astro.props;
+const displayFaqs = preview ? faqs.slice(0, 4) : faqs;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      title="Common Questions"
+      subtitle="Things travellers often ask before visiting Burundi."
+    />
+
+    <div class="space-y-4">
+      {displayFaqs.map((faq, i) => (
+        <details class="group card border border-gray-100 cursor-pointer" name="faq-group">
+          <summary class="flex items-center justify-between gap-4 list-none font-semibold text-[var(--color-brand-green-dark)] cursor-pointer select-none">
+            {faq.question}
+            <svg class="w-5 h-5 flex-shrink-0 text-[var(--color-brand-green)] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-[var(--color-brand-muted)] text-sm leading-relaxed">
+            {faq.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+
+    {preview && (
+      <div class="text-center mt-8">
+        <a href="/contact/" class="btn-green">
+          Ask Gabriel directly
+        </a>
+      </div>
+    )}
+  </div>
+</section>

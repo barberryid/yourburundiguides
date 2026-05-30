@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import { galleryImages } from '../data/gallery';
+---
+
+<BaseLayout
+  title="Burundi Travel Photos | Your Burundi Guides"
+  description="Photos from guided trips in Burundi — Lake Tanganyika, cultural experiences, the countryside, and Bujumbura."
+  canonical="https://www.yourburundiguides.com/photos/"
+>
+  <!-- Page header -->
+  <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Gallery</p>
+        <h1 class="text-4xl font-bold mb-4">Burundi Travel Photos</h1>
+        <p class="text-white/80 text-lg">
+          Images from guided trips, Burundi's landscapes, Lake Tanganyika, cultural visits, and daily life in Bujumbura.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-[var(--color-brand-cream)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <GalleryGrid preview={false} limit={galleryImages.length} />
+    </div>
+  </section>
+
+  <WhatsAppCTA
+    heading="Want to see Burundi for yourself?"
+    subtext="Message Gabriel on WhatsApp to plan your trip."
+    variant="green"
+  />
+</BaseLayout>

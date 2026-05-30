@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PriceCards from '../components/PriceCards.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Burundi Guide Prices | Your Burundi Guides"
+  description="Pricing for private guiding, airport pickup, transport, and custom day trips in Burundi. Contact Gabriel on WhatsApp for a clear quote before you travel."
+  canonical="https://www.yourburundiguides.com/prices/"
+>
+  <!-- Page header -->
+  <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Pricing</p>
+        <h1 class="text-4xl font-bold mb-4">Burundi Guide Prices</h1>
+        <p class="text-white/80 text-lg">
+          Prices depend on the route, number of people, transport needs, and length of the trip. Contact Gabriel on WhatsApp for a clear quote before you travel.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <PriceCards preview={false} />
+
+  <!-- Price transparency note -->
+  <section class="py-12 bg-[var(--color-brand-bg-light)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card">
+        <h2 class="text-xl font-bold text-[var(--color-brand-green-dark)] mb-4">How pricing works</h2>
+        <div class="space-y-3 text-sm text-[var(--color-brand-muted)] leading-relaxed">
+          <p>
+            Prices are not fixed because every trip is different. The main factors that affect the total are: the number of people in your group, how many days you need a guide, whether you need private transport, which destinations you want to visit, and whether you need airport pickup.
+          </p>
+          <p>
+            Gabriel will give you a clear breakdown before you agree to anything. There are no hidden fees. If you want to adjust the plan, he will update the price accordingly.
+          </p>
+          <p>
+            Payment arrangements are agreed directly between you and Gabriel. He will explain the options when you contact him.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="What is typically included"
+        subtitle="Standard inclusions for most bookings. Gabriel will confirm exactly what is covered for your specific trip."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          { icon: '✅', label: 'Guide time', note: 'Your guide for the agreed hours or days' },
+          { icon: '✅', label: 'Private transport', note: 'For trips outside walking distance of your accommodation' },
+          { icon: '✅', label: 'Local communication', note: 'Translation and help communicating in Kirundi and French' },
+          { icon: '✅', label: 'Itinerary planning', note: 'Basic planning help before you arrive' },
+          { icon: '❌', label: 'Accommodation', note: 'Not included — Gabriel can recommend options' },
+          { icon: '❌', label: 'Entry fees', note: 'Parks, sanctuaries, and sites charge their own entrance fees' },
+        ].map((item) => (
+          <div class="flex items-start gap-3 p-4 rounded-lg bg-[var(--color-brand-bg-light)]">
+            <span class="text-lg flex-shrink-0">{item.icon}</span>
+            <div>
+              <p class="font-semibold text-sm text-[var(--color-brand-charcoal)]">{item.label}</p>
+              <p class="text-xs text-[var(--color-brand-muted)]">{item.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppCTA
+    heading="Ask for a quote"
+    subtext="Tell Gabriel your travel dates, group size, and what you want to do. He will reply with a clear price."
+  />
+</BaseLayout>

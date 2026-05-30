@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GuideProfiles from '../components/GuideProfiles.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import PriceCards from '../components/PriceCards.astro';
+import ReviewCards from '../components/ReviewCards.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import FAQ from '../components/FAQ.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Your Burundi Guides | Private Local Guides in Burundi"
+  description="Plan your Burundi trip with trusted local guides. Private guiding, transport help, airport pickup, translation, custom day trips, and practical support before and during your visit."
+>
+  <!-- Schema markup -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "Your Burundi Guides",
+        "description": "Private local guides in Burundi offering guiding, transport, airport pickup, translation, and custom day trips.",
+        "url": "https://www.yourburundiguides.com",
+        "telephone": site.whatsapp,
+        "email": site.email,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bujumbura",
+          "addressCountry": "BI"
+        },
+        "areaServed": "Burundi",
+        "priceRange": "$$"
+      },
+      {
+        "@type": "WebSite",
+        "name": "Your Burundi Guides",
+        "url": "https://www.yourburundiguides.com"
+      }
+    ]
+  })} />
+
+  <Hero />
+
+  <!-- Trust strip -->
+  <div class="bg-[var(--color-brand-green)] py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { icon: '🌍', label: 'Visitors from 20+ countries' },
+          { icon: '🗣️', label: 'English, French & Kirundi' },
+          { icon: '📱', label: 'Fast WhatsApp response' },
+          { icon: '🚗', label: 'Private transport included' },
+        ].map((item) => (
+          <div class="text-white">
+            <div class="text-2xl mb-1">{item.icon}</div>
+            <p class="text-sm font-medium text-white/80">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <GuideProfiles />
+  <ServiceCards preview={true} />
+
+  <!-- Why use a local guide -->
+  <section class="py-16 bg-[var(--color-brand-green-dark)] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Why Travel with a Local Burundi Guide?"
+        subtitle="Burundi is not a destination you find on every travel blog. A local guide makes a real practical difference."
+        light={true}
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '🧭', title: 'Local knowledge', body: 'Gabriel and Ernest know Bujumbura and the surrounding regions from the inside. They know which roads to take, which places are worth visiting, and how to handle the practicalities.' },
+          { icon: '🔐', title: 'Practical confidence', body: 'Having a trusted local contact before and during your trip removes a lot of uncertainty. You can ask real questions and get real answers.' },
+          { icon: '🗣️', title: 'Language support', body: 'Kirundi is the main local language. Having a guide who speaks Kirundi, French, and English opens doors that would otherwise stay closed.' },
+          { icon: '💡', title: 'Honest guidance', body: 'The guides will tell you honestly what is accessible, what is not, and what to expect on the ground. No overselling.' },
+          { icon: '🚗', title: 'Transport sorted', body: 'Getting around Burundi independently is not straightforward. Having private transport arranged through a local saves time and reduces stress.' },
+          { icon: '📋', title: 'Pre-trip planning', body: 'Gabriel can help you plan your itinerary before you arrive — answering questions, recommending accommodation, and helping you understand what is realistic.' },
+        ].map((item) => (
+          <div class="flex gap-4">
+            <div class="text-2xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <h3 class="font-bold text-[var(--color-brand-gold)] mb-1">{item.title}</h3>
+              <p class="text-white/70 text-sm leading-relaxed">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiences preview -->
+  <section class="py-16 bg-[var(--color-brand-bg-light)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Burundi Experiences"
+        subtitle="Some of the most popular things to do with a local guide."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '🌊', place: 'Lake Tanganyika', desc: 'One of the world\'s deepest lakes, right on Bujumbura\'s doorstep. Swimming, sunsets, and lakeside stops.' },
+          { icon: '🥁', place: 'Gishora Drum Sanctuary', desc: 'Traditional Burundian royal drum performances. A cultural experience unlike anything else in the region.' },
+          { icon: '🐊', place: 'Rusizi National Park', desc: 'Hippos, crocodiles, and wetland birds just outside Bujumbura. Short guided visits available.' },
+          { icon: '🏔️', place: 'Burundi Highlands', desc: 'Rolling green hills, tea plantations, and rural villages away from the city.' },
+          { icon: '🏛️', place: 'Source of the Nile Area', desc: 'The southernmost source of the Nile River — a significant and rarely visited landmark.' },
+          { icon: '🛒', place: 'Local Markets', desc: 'Busy Bujumbura markets with fresh produce, crafts, and local life. Best explored with a guide who knows the area.' },
+        ].map((item) => (
+          <div class="card hover:shadow-lg transition-shadow">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-[var(--color-brand-green-dark)] mb-2">{item.place}</h3>
+            <p class="text-[var(--color-brand-muted)] text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/things-to-do/" class="btn-green">Explore things to do in Burundi</a>
+      </div>
+    </div>
+  </section>
+
+  <PriceCards preview={true} />
+  <ReviewCards preview={true} />
+
+  <!-- Photos preview -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Photos from Burundi"
+        subtitle="A selection of images from guided trips and Burundi's landscapes."
+      />
+      <GalleryGrid preview={true} limit={8} />
+    </div>
+  </section>
+
+  <!-- Visa preview -->
+  <section class="py-12 bg-[var(--color-brand-bg-light)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card max-w-2xl mx-auto text-center">
+        <div class="text-4xl mb-4">📋</div>
+        <h2 class="text-2xl font-bold text-[var(--color-brand-green-dark)] mb-3">Visa & Arrival Help</h2>
+        <p class="text-[var(--color-brand-muted)] mb-4">
+          Gabriel can share practical information about arriving in Burundi and what to expect at the airport. Visa rules can change — always check official requirements before you travel.
+        </p>
+        <a href="/visa/" class="btn-green">Read visa & arrival info</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQ preview={true} />
+
+  <WhatsAppCTA />
+</BaseLayout>

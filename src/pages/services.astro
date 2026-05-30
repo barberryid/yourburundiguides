@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TouristInformationCenter",
+  "name": "Your Burundi Guides – Services",
+  "url": "https://www.yourburundiguides.com/services/",
+  "description": "Private guiding, transport, airport pickup, translation, and custom day trips in Burundi."
+};
+---
+
+<BaseLayout
+  title="Burundi Guiding Services | Your Burundi Guides"
+  description="Private guiding, airport pickup, transport, translation, custom day trips, and multi-day itineraries in Burundi. Contact Gabriel for a clear quote."
+  canonical="https://www.yourburundiguides.com/services/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Page header -->
+  <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">What We Offer</p>
+        <h1 class="text-4xl font-bold mb-4">Burundi Guiding Services</h1>
+        <p class="text-white/80 text-lg">
+          Gabriel and Ernest offer practical local support for independent travellers visiting Burundi. From airport pickup to custom multi-day trips.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- All services grid -->
+  <ServiceCards preview={false} />
+
+  <!-- How it works -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="How to Book"
+        subtitle="Booking is simple. Everything is arranged directly with Gabriel over WhatsApp."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+        {[
+          { step: '1', title: 'Message Gabriel', desc: 'Send your travel dates, group size, arrival city, and what you want to do. Use WhatsApp for the fastest reply.' },
+          { step: '2', title: 'Get a clear quote', desc: 'Gabriel will reply with options and a clear price before you commit. No obligation.' },
+          { step: '3', title: 'Travel with local support', desc: 'Arrive knowing your guide, transport, and plan are sorted. Adjust the plan as you go if needed.' },
+        ].map((item) => (
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-brand-green)] text-white font-bold text-xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="font-bold text-[var(--color-brand-green-dark)] mb-2">{item.title}</h3>
+            <p class="text-[var(--color-brand-muted)] text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ-style service notes -->
+  <section class="py-12 bg-[var(--color-brand-bg-light)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Practical Notes"
+        subtitle="A few things to know before you book."
+        centered={false}
+      />
+      <div class="space-y-6">
+        {[
+          { q: 'Can I book just one service, like transport only?', a: 'Yes. You can book airport pickup only, transport only, or guiding only. Gabriel will advise on what makes sense for your specific trip.' },
+          { q: 'Is a guide available for my exact travel dates?', a: 'Availability varies. Contact Gabriel as early as possible, especially if you are travelling during busy periods.' },
+          { q: 'Can the guide arrange accommodation recommendations?', a: 'Gabriel can recommend options to suit different budgets. He cannot directly book accommodation on your behalf, but can advise on what is available in Bujumbura and beyond.' },
+          { q: 'Can you help with last-minute arrangements?', a: 'Sometimes — it depends on availability. WhatsApp Gabriel as soon as you know your plans. Even a few days notice helps.' },
+        ].map((item) => (
+          <div>
+            <h3 class="font-semibold text-[var(--color-brand-green-dark)] mb-1">{item.q}</h3>
+            <p class="text-[var(--color-brand-muted)] text-sm">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppCTA
+    heading="Ready to plan your Burundi trip?"
+    subtext="Message Gabriel on WhatsApp with your dates, group size, and what you want to do. He will reply with options and prices."
+  />
+</BaseLayout>

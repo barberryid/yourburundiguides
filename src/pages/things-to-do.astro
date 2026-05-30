@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Things to Do in Burundi",
+  "url": "https://www.yourburundiguides.com/things-to-do/"
+};
+
+const destinations = [
+  {
+    icon: '🌊',
+    name: 'Lake Tanganyika',
+    area: 'Bujumbura',
+    description: 'One of the world\'s deepest lakes and a UNESCO World Heritage candidate. The lake\'s shores are just outside central Bujumbura. Swimming, boat trips, and lakeside beaches are all possible. The water is remarkably clear and the sunsets over the lake are genuinely beautiful.',
+    tips: ['Best in the dry season for swimming', 'Several lakeside spots accessible from the city', 'Early morning is quietest'],
+  },
+  {
+    icon: '🥁',
+    name: 'Gishora Drum Sanctuary',
+    area: 'Near Gitega',
+    description: 'Burundi\'s traditional royal drum ceremonies are a cultural experience unlike anything else in the region. The sacred drums — known as Karyenda — hold deep historical and spiritual significance. Live performances are arranged for visitors at the sanctuary in Gishora.',
+    tips: ['About 2 hours from Bujumbura', 'Best combined with a full-day trip', 'Photography usually permitted'],
+  },
+  {
+    icon: '🐊',
+    name: 'Rusizi National Park',
+    area: 'Near Bujumbura',
+    description: 'A wetland reserve at the mouth of the Rusizi River where it flows into Lake Tanganyika. Hippos are regularly visible from the water, along with crocodiles, fish eagles, and other wetland birds. Boat trips into the park are the best way to see the wildlife.',
+    tips: ['Just outside Bujumbura — can be a half-day trip', 'Boat trips available', 'Good for birdwatching'],
+  },
+  {
+    icon: '🏔️',
+    name: 'Burundi Highlands & Countryside',
+    area: 'Central & Southern Burundi',
+    description: 'Burundi\'s interior is a landscape of steep green hills, tea plantations, and small rural villages. Driving through the countryside gives a very different impression of the country from the city. The views from the higher elevations are striking.',
+    tips: ['Best as a multi-day trip', 'Roads can be challenging — private transport recommended', 'Tea plantations open to some visitors'],
+  },
+  {
+    icon: '🏛️',
+    name: 'Source of the Nile Area',
+    area: 'Near Rutovu, Southern Burundi',
+    description: 'Burundi claims one of the southernmost sources of the Nile River — a spring in the hills near the town of Rutovu. A pyramid monument marks the site. It is a rarely visited but genuinely interesting landmark for travellers interested in geography and exploration history.',
+    tips: ['A long day trip or overnighter from Bujumbura', 'Best with a local guide who knows the area', 'Combine with countryside driving'],
+  },
+  {
+    icon: '🏙️',
+    name: 'Bujumbura City',
+    area: 'Bujumbura',
+    description: 'The capital is a working city on the edge of Lake Tanganyika. It has busy markets, lively streets, good local restaurants, and a mix of colonial-era and modern buildings. Walking the city with a local guide brings it to life in a way that independent wandering does not.',
+    tips: ['Central Market is worth visiting', 'Lakeside area has cafes and restaurants', 'Safer to walk key areas with a local guide'],
+  },
+  {
+    icon: '🛒',
+    name: 'Local Markets',
+    area: 'Bujumbura',
+    description: 'Bujumbura\'s central market is a dense, energetic place selling fresh produce, household goods, clothes, and local crafts. It\'s a real cross-section of daily life. Having Gabriel with you makes the experience much richer — he can introduce you to vendors, explain what you\'re seeing, and help you find things worth buying.',
+    tips: ['Central Market is the main one', 'Morning is the busiest', 'Best with a guide who knows the layout'],
+  },
+  {
+    icon: '🌿',
+    name: 'Cultural Visits & Community Experiences',
+    area: 'Various locations',
+    description: 'Depending on your interests, Gabriel can arrange visits to local communities, craft workshops, and cultural sites around Bujumbura. These experiences are not on standard tourist trails and require a trusted local contact to arrange respectfully.',
+    tips: ['Arrange in advance', 'Be flexible — these visits depend on local availability', 'Bring a respectful and open attitude'],
+  },
+];
+---
+
+<BaseLayout
+  title="Things to Do in Burundi | Your Burundi Guides"
+  description="Discover Burundi's best experiences — Lake Tanganyika, Gishora Drum Sanctuary, Rusizi National Park, the highlands, local markets, and Bujumbura city."
+  canonical="https://www.yourburundiguides.com/things-to-do/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Page header -->
+  <div class="bg-[var(--color-brand-green-dark)] text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-brand-gold)] font-semibold text-sm uppercase tracking-wider mb-3">Experiences</p>
+        <h1 class="text-4xl font-bold mb-4">Things to Do in Burundi</h1>
+        <p class="text-white/80 text-lg">
+          A guide to the most rewarding experiences in Burundi — from Lake Tanganyika to the highlands, cultural ceremonies to local markets.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-[var(--color-brand-cream)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {destinations.map((dest) => (
+          <div class="card flex gap-5">
+            <div class="text-4xl flex-shrink-0">{dest.icon}</div>
+            <div>
+              <div class="flex items-baseline gap-2 mb-1">
+                <h2 class="text-xl font-bold text-[var(--color-brand-green-dark)]">{dest.name}</h2>
+                <span class="text-xs text-[var(--color-brand-muted)] bg-[var(--color-brand-bg-light)] px-2 py-0.5 rounded-full">{dest.area}</span>
+              </div>
+              <p class="text-[var(--color-brand-muted)] text-sm leading-relaxed mb-3">{dest.description}</p>
+              <div class="space-y-1">
+                {dest.tips.map((tip) => (
+                  <div class="flex items-start gap-2 text-xs text-[var(--color-brand-muted)]">
+                    <svg class="w-3 h-3 text-[var(--color-brand-green)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    {tip}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Planning note -->
+      <div class="mt-12 card bg-[var(--color-brand-green-dark)] text-white text-center max-w-2xl mx-auto">
+        <h2 class="text-xl font-bold mb-3">Want help planning your itinerary?</h2>
+        <p class="text-white/75 text-sm mb-4">
+          Gabriel can help you build a realistic day-by-day plan based on your travel dates, group size, and interests. Tell him what you want to see and he will suggest what is practical.
+        </p>
+        <a href="/contact/" class="btn-primary inline-flex">Plan my Burundi trip</a>
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppCTA
+    heading="See Burundi with a local guide"
+    subtext="Message Gabriel to plan your itinerary. He knows which places are worth visiting and how to get there."
+    variant="cream"
+  />
+</BaseLayout>
