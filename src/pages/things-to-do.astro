@@ -9,6 +9,8 @@ const destinations = [
     icon: '🌊',
     name: 'Lake Tanganyika',
     area: 'Bujumbura',
+    image: '/images/gallery/lake-tanganyika-fishermen.jpg',
+    imageAlt: 'Fishermen on a wooden boat on Lake Tanganyika',
     description: 'One of the world\'s deepest lakes and a UNESCO World Heritage candidate. The lake\'s shores are just outside central Bujumbura. Swimming, boat trips, and lakeside beaches are all possible. The water is remarkably clear and the sunsets over the lake are genuinely beautiful.',
     tips: ['Best in the dry season for swimming', 'Several lakeside spots accessible from the city', 'Early morning is quietest'],
   },
@@ -16,6 +18,8 @@ const destinations = [
     icon: '🥁',
     name: 'Gishora Drum Sanctuary',
     area: 'Near Gitega',
+    image: '/images/gallery/burundi-royal-drummers-parade.jpg',
+    imageAlt: 'Royal drummers of Burundi carrying drums on their heads during a performance',
     description: 'Burundi\'s traditional royal drum ceremonies are a cultural experience unlike anything else in the region. The sacred drums — known as Karyenda — hold deep historical and spiritual significance. Live performances are arranged for visitors at the sanctuary in Gishora.',
     tips: ['About 2 hours from Bujumbura', 'Best combined with a full-day trip', 'Photography usually permitted'],
   },
@@ -23,6 +27,8 @@ const destinations = [
     icon: '🐊',
     name: 'Rusizi National Park',
     area: 'Near Bujumbura',
+    image: '/images/gallery/wetland-water-lilies.jpg',
+    imageAlt: 'Water lilies covering a wetland lagoon',
     description: 'A wetland reserve at the mouth of the Rusizi River where it flows into Lake Tanganyika. Hippos are regularly visible from the water, along with crocodiles, fish eagles, and other wetland birds. Boat trips into the park are the best way to see the wildlife.',
     tips: ['Just outside Bujumbura — can be a half-day trip', 'Boat trips available', 'Good for birdwatching'],
   },
@@ -30,6 +36,8 @@ const destinations = [
     icon: '🏔️',
     name: 'Burundi Highlands & Countryside',
     area: 'Central & Southern Burundi',
+    image: '/images/gallery/burundi-tea-plantation-hills.jpg',
+    imageAlt: 'Tea plantations across the green hills of the Burundi highlands',
     description: 'Burundi\'s interior is a landscape of steep green hills, tea plantations, and small rural villages. Driving through the countryside gives a very different impression of the country from the city. The views from the higher elevations are striking.',
     tips: ['Best as a multi-day trip', 'Roads can be challenging — private transport recommended', 'Tea plantations open to some visitors'],
   },
@@ -37,6 +45,8 @@ const destinations = [
     icon: '🏛️',
     name: 'Source of the Nile Area',
     area: 'Near Rutovu, Southern Burundi',
+    image: '/images/gallery/source-of-the-nile-pyramid.jpg',
+    imageAlt: 'Pyramid monument at the southernmost source of the Nile near Rutovu',
     description: 'Burundi claims one of the southernmost sources of the Nile River — a spring in the hills near the town of Rutovu. A pyramid monument marks the site. It is a rarely visited but genuinely interesting landmark for travellers interested in geography and exploration history.',
     tips: ['A long day trip or overnighter from Bujumbura', 'Best with a local guide who knows the area', 'Combine with countryside driving'],
   },
@@ -44,6 +54,8 @@ const destinations = [
     icon: '🏙️',
     name: 'Bujumbura City',
     area: 'Bujumbura',
+    image: '/images/gallery/bujumbura-viewpoint-group.jpg',
+    imageAlt: 'Travellers with their local guide overlooking Bujumbura',
     description: 'The capital is a working city on the edge of Lake Tanganyika. It has busy markets, lively streets, good local restaurants, and a mix of colonial-era and modern buildings. Walking the city with a local guide brings it to life in a way that independent wandering does not.',
     tips: ['Central Market is worth visiting', 'Lakeside area has cafes and restaurants', 'Safer to walk key areas with a local guide'],
   },
@@ -51,6 +63,8 @@ const destinations = [
     icon: '🛒',
     name: 'Local Markets',
     area: 'Bujumbura',
+    image: '/images/gallery/bujumbura-market-pineapples.jpg',
+    imageAlt: 'Fresh pineapples for sale at a local market stall',
     description: 'Bujumbura\'s central market is a dense, energetic place selling fresh produce, household goods, clothes, and local crafts. Having Gabriel with you makes the experience much richer — he can introduce you to vendors, explain what you\'re seeing, and help you find things worth buying.',
     tips: ['Central Market is the main one', 'Morning is the busiest', 'Best with a guide who knows the layout'],
   },
@@ -58,6 +72,8 @@ const destinations = [
     icon: '🌿',
     name: 'Cultural Visits & Community Experiences',
     area: 'Various locations',
+    image: '/images/gallery/village-visit-children.jpg',
+    imageAlt: 'Traveller meeting children during a village visit',
     description: 'Depending on your interests, Gabriel can arrange visits to local communities, craft workshops, and cultural sites around Bujumbura. These experiences are not on standard tourist trails and require a trusted local contact to arrange respectfully.',
     tips: ['Arrange in advance', 'Be flexible — these visits depend on local availability', 'Bring a respectful and open attitude'],
   },
@@ -101,7 +117,17 @@ const structuredData = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {destinations.map((dest) => (
-          <div class="card flex gap-5">
+          <div class="card flex flex-col gap-5">
+            <img
+              src={dest.image}
+              alt={dest.imageAlt}
+              class="aspect-[16/9] w-full rounded-xl object-cover"
+              loading="lazy"
+              decoding="async"
+              width="640"
+              height="360"
+            />
+            <div class="flex gap-5">
             <div class="text-4xl flex-shrink-0">{dest.icon}</div>
             <div>
               <div class="flex items-baseline gap-2 mb-1">
@@ -119,6 +145,7 @@ const structuredData = {
                   </div>
                 ))}
               </div>
+            </div>
             </div>
           </div>
         ))}
