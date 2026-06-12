@@ -79,13 +79,52 @@ const destinations = [
   },
 ];
 
+const regionalTours = [
+  {
+    icon: '🦍',
+    name: 'Gorilla Trekking',
+    area: 'Rwanda, Uganda & DRC',
+    image: '/images/gallery/mountain-gorilla-mother-baby.jpg',
+    imageAlt: 'Mountain gorilla mother with her baby seen on a gorilla trekking trip',
+    description: 'Trek to see mountain gorillas in the forests of Rwanda or Uganda, with DRC sometimes possible depending on current conditions. Gabriel arranges permits, transport and accommodation, and travels with you. Standing a few metres from a gorilla family is a genuinely unforgettable experience.',
+    tips: ['Permits must be booked well in advance', 'A reasonable level of fitness helps', 'Combine with your Burundi trip into one route'],
+  },
+  {
+    icon: '🐘',
+    name: 'Wildlife Safaris',
+    area: 'Uganda',
+    image: '/images/gallery/elephant-crossing-safari-road.jpg',
+    imageAlt: 'Elephant crossing a dirt road on an East African safari',
+    description: 'Elephants, hippos, buffalo, antelope and rich birdlife on safari in Uganda\'s national parks, including Queen Elizabeth National Park. Game drives and boat safaris can be combined with a gorilla trek for a longer overland route starting or ending in Burundi.',
+    tips: ['Best as a 2–3 day extension', 'Game drives are best early morning', 'Boat safaris offer the closest hippo sightings'],
+  },
+  {
+    icon: '🦏',
+    name: 'Rhino Trekking on Foot',
+    area: 'Ziwa Rhino Sanctuary, Uganda',
+    image: '/images/gallery/rhino-trek-guest.jpg',
+    imageAlt: 'Traveller on a guided rhino trekking walk',
+    description: 'Walk with rangers to within safe viewing distance of wild white rhinos — on foot, not from a vehicle. The sanctuary protects Uganda\'s only wild rhino population and the walking experience feels completely different from a normal game drive.',
+    tips: ['Guided by armed rangers at all times', 'Easy walking — suitable for most travellers', 'Often combined with a wider Uganda route'],
+  },
+  {
+    icon: '🌉',
+    name: 'Rainforest Canopy Walkway',
+    area: 'Nyungwe Forest, Rwanda',
+    image: '/images/gallery/rainforest-canopy-bridge.jpg',
+    imageAlt: 'Canopy walkway suspended above the rainforest',
+    description: 'Cross a suspension walkway high above the rainforest canopy in Nyungwe Forest, one of Africa\'s oldest mountain rainforests. Nyungwe sits close to the Burundi border, so it fits naturally into a combined Burundi and Rwanda itinerary.',
+    tips: ['A head for heights helps', 'Chimpanzee and primate tracking also possible', 'Easily combined with the Burundi highlands'],
+  },
+];
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Things to Do in Burundi',
   description: pageMeta.thingsToDo.description,
   url: `${site.siteUrl}/things-to-do/`,
-  itemListElement: destinations.map((d, i) => ({
+  itemListElement: [...destinations, ...regionalTours].map((d, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: d.name,
@@ -107,7 +146,7 @@ const structuredData = {
         <p class="eyebrow mb-3">Experiences</p>
         <h1 class="display-title text-balance mb-5 text-5xl md:text-6xl">Things to Do in Burundi</h1>
         <p class="text-xl leading-9 text-white/80">
-          A guide to the most rewarding Burundi experiences — from Lake Tanganyika and the Gishora Drum Sanctuary to the highlands, cultural visits, and local markets.
+          A guide to the most rewarding Burundi experiences — from Lake Tanganyika and the Gishora Drum Sanctuary to the highlands, cultural visits, and local markets. Plus gorilla treks and safaris in Rwanda, Uganda and DRC.
         </p>
       </div>
     </div>
@@ -149,6 +188,57 @@ const structuredData = {
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- Regional tours beyond Burundi -->
+      <div class="mt-20">
+        <SectionHeading
+          title="Tours beyond Burundi"
+          subtitle="Burundi sits next to Rwanda, DRC and Uganda — and the guides regularly run cross-border trips combining Burundi with the region's biggest wildlife experiences."
+        />
+        <figure class="mx-auto mb-10 max-w-2xl text-center">
+          <blockquote class="text-lg italic leading-8 text-[var(--color-brand-green-dark)]">
+            "We have photos taken during the tours we made here in Burundi, Rwanda, DRC and Uganda."
+          </blockquote>
+          <figcaption class="mt-2 text-sm font-semibold text-[var(--color-brand-muted)]">
+            — Gabriel, lead guide
+          </figcaption>
+        </figure>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {regionalTours.map((tour) => (
+            <div class="card flex flex-col gap-5">
+              <img
+                src={tour.image}
+                alt={tour.imageAlt}
+                class="aspect-[16/9] w-full rounded-xl object-cover"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
+              />
+              <div class="flex gap-5">
+              <div class="text-4xl flex-shrink-0">{tour.icon}</div>
+              <div>
+                <div class="flex items-baseline gap-2 mb-1">
+                  <h2 class="text-xl font-bold text-[var(--color-brand-green-dark)]">{tour.name}</h2>
+                  <span class="text-xs text-[var(--color-brand-muted)] bg-[var(--color-brand-bg-light)] px-2 py-0.5 rounded-full">{tour.area}</span>
+                </div>
+                <p class="mb-3 text-base leading-8 text-[var(--color-brand-muted)]">{tour.description}</p>
+                <div class="space-y-1">
+                  {tour.tips.map((tip) => (
+                    <div class="flex items-start gap-2 text-sm leading-6 text-[var(--color-brand-muted)]">
+                      <svg class="w-3 h-3 text-[var(--color-brand-green)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                      {tip}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <!-- CTA card -->

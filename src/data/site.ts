@@ -68,7 +68,7 @@ export const pageMeta = {
   thingsToDo: {
     title: 'Things to Do in Burundi | Local Guide Ideas and Day Trips',
     description:
-      'Explore things to do in Burundi with local guide ideas for Bujumbura, Lake Tanganyika, Gishora Drum Sanctuary, Rusizi National Park, countryside trips, markets, and culture.',
+      'Explore things to do in Burundi with local guide ideas for Lake Tanganyika, Gishora Drum Sanctuary, Rusizi National Park, markets and culture — plus gorilla treks and safaris in Rwanda, Uganda and DRC.',
   },
   contact: {
     title: 'Contact Your Burundi Guides | WhatsApp a Local Guide',
